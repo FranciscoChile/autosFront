@@ -3,14 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Car } from '../../shared/car.model';
-
+import { environment } from './../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarsService {
   
-  private apiUrl = "http://localhost:8080/api/cars";
+  private apiUrl = environment.apiUrl;
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
