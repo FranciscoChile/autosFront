@@ -1,0 +1,38 @@
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    margin-bottom: 16px;    
+}
+
+.mat-card-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.mat-card-title span {
+    font-weight: lighter;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+mat-form-field {
+    width: 50%;
+    
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+.mat-card:hover{
+    cursor: pointer;
+    box-shadow: 0 8px 8px 0px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
+}

@@ -1,0 +1,46 @@
+.content {
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+img {
+    border-radius: 4px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.card-left {
+    width: 60%;
+}
+
+.card-right {
+    width: 30%;
+}
+
+.mat-card-title h1 {
+    line-height: 1.25;
+    font-weight: 900;
+    font-size: 1.8rem;
+}
+
+.price {
+    margin-bottom: 30px;
+}
+
+.mat-card {
+    margin-bottom: 20px;
+}
+
+.button-row {
+    display: table-cell;
+    width: 490px;
+}
+
+.button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+}
+
+button {
+    width: 100%;
+}

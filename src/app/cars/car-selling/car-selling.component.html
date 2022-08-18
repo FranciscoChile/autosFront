@@ -1,0 +1,29 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isCompleted"></mat-progress-bar>
+<div class="content">
+
+    <div class="parent">
+        <mat-form-field>        
+            <input type="tel" matInput placeholder="Buscar marco, modelo o año" name= "search" [(ngModel)]= "search">
+            <button matSuffix mat-button><mat-icon >search</mat-icon></button>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of carsDisplay | filter:search">
+        
+        <mat-card class="mat-elevation-z4" [routerLink] = "['/detail', car.id]" >
+          <img mat-card-image [src]="car.imgMain">
+
+          <mat-card-title>{{$any(car).brand}} <span> {{$any(car).model}} </span></mat-card-title>
+          <mat-card-subtitle>{{$any(car).year}} - {{$any(car).kilometers}}km - {{$any(car).transmission}}</mat-card-subtitle>
+
+          <mat-card-content>
+            <p class="price"> $ {{$any(car).price | number:'3.0-0'}}
+            </p>
+          </mat-card-content>
+
+        </mat-card>
+      
+      </div>
+    </div>
+  </div>

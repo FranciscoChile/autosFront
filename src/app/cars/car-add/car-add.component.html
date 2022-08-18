@@ -1,0 +1,75 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isCompleted"></mat-progress-bar>
+<mat-card>
+    <mat-panel-title>Agregar Vehículo</mat-panel-title>
+</mat-card>
+  
+<mat-card>
+    <form [formGroup]="carForm" (ngSubmit)="onFormSubmit()">
+  
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Marca" formControlName="brand">
+          <mat-error>
+            <span *ngIf="carForm.get('brand')?.invalid">Ingrese id válido</span>
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Modelo" formControlName="model">
+        <mat-error>
+          <span *ngIf="carForm.get('model')?.invalid">Ingrese modelo válido</span>
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Año" formControlName="year">
+        <mat-error>
+          <span *ngIf="carForm.get('year')?.invalid">Ingrese año válido</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Kilometraje" formControlName="kilometers">
+        <mat-error>
+          <span *ngIf="carForm.get('kilometers')?.invalid">Ingrese kilometraje válido</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Precio" formControlName="price">
+        <mat-error>
+          <span *ngIf="carForm.get('price')?.invalid">Ingrese precio válido</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Transmisión" formControlName="transmission">
+        <mat-error>
+          <span *ngIf="carForm.get('transmission')?.invalid">Ingrese tipo de transmisión válida</span>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-row">
+        <button type="submit" [disabled]="!carForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+        <button type="button" mat-flat-button color="primary" (click)="cancelEdit()">Cancel</button>      
+      </div>
+  
+  
+    </form>
+  
+  
+  </mat-card>
+
+  <mat-card>
+  <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">          
+    <label ><strong>Arrastra y suelta imágenes acá</strong></label>
+    <input hidden type="file" id ="file" multiple #fileInput class="inputfile" (change)="uploadFile($event)">
+  </div>
+  <div  class="files-list" *ngFor="let file of files;let i= index">
+    <p> {{ file.name }} </p>
+    <button class="delete-file" (click)="deleteAttachment(i)">
+      <mat-icon >delete</mat-icon>
+    </button>
+  </div>
+
+</mat-card>
+  

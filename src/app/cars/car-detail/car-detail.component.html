@@ -1,0 +1,39 @@
+<div class="content">
+
+  <div fxLayout="row wrap" fxLayoutGap="30px" >
+    <div class="card-left">
+      <img  [src]="carDisplay.imgMain">
+
+      <ng-image-slider 
+      [images]="imageObject" 
+      [imageSize]="{width: 200}"
+      [manageImageRatio]="true"
+      #nav>
+      </ng-image-slider>  
+
+    </div>
+    <div class="card-right">
+      <mat-card>
+      <mat-card-title>
+        <h1>
+        {{carDisplay.brand}} {{carDisplay.model}} {{carDisplay.year}} 
+        </h1>
+      </mat-card-title>
+
+
+      </mat-card>
+      <mat-card>
+        Precio
+        <mat-card-title class="price">
+          $ {{carDisplay.price | number:'3.0-0'}} CLP
+        </mat-card-title>
+        <mat-card-content>
+          <div class="button-row">
+            <button mat-raised-button color="primary">Pedir Informes</button>
+            <button mat-raised-button color="primary">Simular Créditos</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div> 
+  </div>
+</div> 
