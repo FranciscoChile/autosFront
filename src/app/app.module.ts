@@ -1,7 +1,8 @@
 import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { CarsRoutingModule } from './cars-routing.module';
+import { UsersRoutingModule } from './users-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './cars/home/home.component';
 import { CarAddComponent } from './cars/car-add/car-add.component';
@@ -41,6 +42,8 @@ import { ServerErrorInterceptor } from './shared/server-error-interceptor';
 import { GlobalErrorHandler } from './shared/global-error-handler';
 
 import { NgImageSliderModule } from 'ng-image-slider';
+import { SignupComponent } from './users/signup/signup.component';
+import { LoginComponent } from './users/login/login.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +52,14 @@ import { NgImageSliderModule } from 'ng-image-slider';
     CarAddComponent,
     CarSellingComponent,
     CarDetailComponent,
-    DragDropDirective
+    DragDropDirective,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    CarsRoutingModule,
+    UsersRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,

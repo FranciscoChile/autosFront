@@ -22,8 +22,14 @@ a:link {
   .opciones-menu {
     margin-left: auto;
     display: block;
+    color: white;
   }
 
   .opciones-menu > a {
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  body {
+    color: white;
   }

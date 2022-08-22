@@ -1,6 +1,8 @@
 <mat-toolbar style="min-height: 57px !important; height: 57px !important; background-color: black;">
     <div>
-        <img src="assets/images/mube-logo.png" style="width: 140px;" >
+        <a [routerLink]="['/']" >
+            <img src="assets/images/mube-logo.png" style="width: 140px;" >
+        </a>
     </div>
     <div class="opciones-menu" >
         <a [routerLink]="['/selling']" >
@@ -11,8 +13,12 @@
             Crédito
         </a>
 
-        <a  >
+        <a  [routerLink]="['/login']">
             Iniciar Sesión
+        </a>
+        o
+        <a  [routerLink]="['/signup']">
+            Registrarse
         </a>
     </div>
 </mat-toolbar>

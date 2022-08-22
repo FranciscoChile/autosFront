@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/autos-front'),
+      dir: require('path').join(__dirname, './coverage/mube-front'),
       subdir: '.',
       reporters: [
         { type: 'html' },

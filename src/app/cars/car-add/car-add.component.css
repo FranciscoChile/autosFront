@@ -1,17 +1,6 @@
-/* Structure */
-.example-container {
-    position: relative;
-    padding: 5px;
-  }
-  
-  .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
   
   .example-full-width {
-    width: 100%;
+    width: 50%;
   }
   
   .example-full-width:nth-last-child {
@@ -24,13 +13,6 @@
   
   .mat-flat-button {
     margin: 5px;
-  }
-  
-  .invisible{
-    display: block;
-    visibility: hidden;
-    height: 0;
-    width: 0;
   }
   
   
@@ -75,6 +57,35 @@
   .uploadfilecontainer label {
     color: #d3394c;
     cursor: pointer;
+  }
+
+  :host {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+  .button {
+    display: flex;
+    justify-content: flex-end;
   }
 
   mat-card {
