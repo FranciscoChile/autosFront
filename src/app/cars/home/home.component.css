@@ -53,6 +53,7 @@ a:link {
 
   .container-home1 {
     position: relative;
+    font-size: xx-large;
   }
 
   .texto-home1 {
@@ -68,4 +69,72 @@ a:link {
     font-size: 45px;
     
     color: #FFFFFF;
+  }
+
+  .texto-home1-2 {
+    padding-top: 20px;
+    color: #07FDAF;
+  }
+
+  .home-line1 {
+    position: absolute;
+    width: 95px;
+    height: 1px;
+    left: 2px;
+    top: 103px;
+    border: 2px solid #07FDAF;
+    border-radius: 10px;
+    transform: rotate(90deg);
+  }
+
+  .button-row {
+    position: absolute;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    top: 500px;
+    margin: 10px 0;
+    
+  }
+
+  .button-row > button {
+    margin-right: 20px;
+    width: 160px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 10px;
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+
+  }
+
+  .container-home2 {
+    position: relative;
+    background: #1A5D71;
+    font-size: xx-large;
+    display: flex; /*Convertimos al menú en flexbox*/
+    justify-content: space-between; /*Con esto le indicamos que margine todos los items que se encuentra adentro hacia la derecha e izquierda*/    
+  }
+
+  .home-somos-text {
+    left: 50px;
+    top: 70px;
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 500;
+    font-size: 70px;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .home-mube-logo2 {
+    position: relative;
+    width: 40%;
+    left: 4%;
+    top: 50px;
   }
