@@ -1,1 +1,49 @@
-<p>Home</p>
+<mat-toolbar style="min-height: 70px !important; height: 70px !important; background-color: white; ">
+    <div>
+        <a [routerLink]="['/']" >
+            <img src="../../../assets/images/mube-logo.png" style="width: 140px;" >
+        </a>
+    </div>
+    <div class="opciones-menu" >
+        <a [routerLink]="['/add']" >
+            Vende tu auto
+        </a>
+
+        <a [routerLink]="['/selling']" >
+            Comprar
+        </a>
+        <a  >
+            ¿Cómo comprar?
+        </a>
+        <a  >
+            ¿Cómo vender?
+        </a>
+        <a  >
+            Financiamiento
+        </a>
+    </div>
+<div class="opciones-menu-login">
+    <a  [routerLink]="['/login']">
+        Iniciar Sesión
+    </a>
+</div>
+
+
+</mat-toolbar>
+
+<div>
+
+    <div class="container-home1">
+        <div class="texto-home1">
+            <p>
+                Plataforma que facilita la compra            
+            </p>
+            <p style="padding-top: 20px;">
+                y venta de autos entre personas.
+            </p>    
+        </div>
+        <img src="../../../assets/images/home1.png" style="width: 100%;"  >
+    </div>
+
+
+</div>

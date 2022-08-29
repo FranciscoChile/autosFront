@@ -90,7 +90,7 @@ export class CarAddComponent implements OnInit {
   }
 
   cancelEdit() {
-    this.router.navigate(['/selling']);
+    this.router.navigate(['/']);
   }
 
   
