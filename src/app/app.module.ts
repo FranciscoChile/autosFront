@@ -47,6 +47,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { Home2Component } from './cars/home2/home2/home2.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
     DragDropDirective,
     SignupComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    Home2Component
   ],
   imports: [
     BrowserModule,

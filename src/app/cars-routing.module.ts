@@ -4,6 +4,7 @@ import { CarAddComponent } from './cars/car-add/car-add.component';
 import { CarDetailComponent } from './cars/car-detail/car-detail.component';
 import { CarSellingComponent } from './cars/car-selling/car-selling.component';
 import { HomeComponent } from './cars/home/home.component';
+import { Home2Component } from './cars/home2/home2/home2.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: Home2Component
+  },
+  {
+    path: 'home',
     component: HomeComponent
   },
   { 
