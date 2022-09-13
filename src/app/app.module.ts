@@ -26,6 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion'; 
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -83,7 +85,8 @@ import { Home2Component } from './cars/home2/home2/home2.component';
     MatSidenavModule, MatListModule,
     MatSlideToggleModule, MatGridListModule, MatExpansionModule, 
     FormsModule, ReactiveFormsModule, 
-    Ng2SearchPipeModule, MatSnackBarModule, NgImageSliderModule
+    Ng2SearchPipeModule, MatSnackBarModule, NgImageSliderModule, 
+    MatDatepickerModule, MatNativeDateModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

@@ -1449,17 +1449,7 @@ a:link {
     white-space: nowrap;
     width: 182px;
   }
-  
-  .home .price {
-    left: 26px;
-    letter-spacing: 0;
-    line-height: 28.3px;
-    position: absolute;
-    top: 287px;
-    white-space: nowrap;
-    width: 249px;
-  }
-  
+    
   .home .x658km-gasolina {
     left: 26px;
     letter-spacing: 0;
@@ -1932,7 +1922,7 @@ a:link {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 140px;
+    margin-top: 70px;
     width: 100%;
   }
   
@@ -2238,3 +2228,43 @@ a:link {
     display: flex; /*Convertimos al menú en flexbox*/
     justify-content: space-between; /*Con esto le indicamos que margine todos los items que se encuentra adentro hacia la derecha e izquierda*/    
   }
+
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  .price {
+    font-size: 24px;
+    font-weight: bolder;
+  }
+
+  .mat-card-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .mat-card-title span {
+      font-weight: lighter;
+  }
+
+  .mat-card:hover{
+    cursor: pointer;
+    box-shadow: 0 8px 8px 0px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
+}
+
+/*
+.accordion-button.collapsed::after {
+  background-image: url("../../../../assets/images/home2/vector-2@2x.svg");
+  background-size: 10px;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("../../../../assets/images/home2/vector-12@2x.svg");
+}
+*/
