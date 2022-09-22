@@ -11,7 +11,7 @@ import { CarAddComponent } from './cars/car-add/car-add.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,8 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatExpansionModule } from '@angular/material/expansion'; 
-import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatListModule } from '@angular/material/list';
@@ -36,12 +36,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
+
 import { CarSellingComponent } from './cars/car-selling/car-selling.component';
 import { CarDetailComponent } from './cars/car-detail/car-detail.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DragDropDirective } from './shared/drag-drop.directive';
-import { MatSnackBarModule } from '@angular/material/snack-bar'; 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ServerErrorInterceptor } from './shared/server-error-interceptor';
 import { GlobalErrorHandler } from './shared/global-error-handler';
 
@@ -83,10 +86,16 @@ import { Home2Component } from './cars/home2/home2/home2.component';
     MatIconModule,
     MatFormFieldModule, MatProgressBarModule,
     MatSidenavModule, MatListModule,
-    MatSlideToggleModule, MatGridListModule, MatExpansionModule, 
-    FormsModule, ReactiveFormsModule, 
-    Ng2SearchPipeModule, MatSnackBarModule, NgImageSliderModule, 
-    MatDatepickerModule, MatNativeDateModule
+    MatSlideToggleModule, MatGridListModule, MatExpansionModule,
+    FormsModule, ReactiveFormsModule,
+    Ng2SearchPipeModule, MatSnackBarModule, NgImageSliderModule,
+    MatDatepickerModule, MatNativeDateModule,
+    FormlyModule.forRoot({
+      extras: {
+        lazyRender: true
+      }
+    }),
+    FormlyBootstrapModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

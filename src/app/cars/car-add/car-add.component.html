@@ -3,23 +3,23 @@
 <mat-card>
   <mat-panel-title>Agregar Vehículo</mat-panel-title>
 
-  <mat-card-content>
-  <form [formGroup]="carForm" (ngSubmit)="onFormSubmit()">
-  
+  <mat-card-content style="flex-direction: column;">
+    <form [formGroup]="carForm" (ngSubmit)="onFormSubmit()">
+
       <mat-form-field class="example-full-width">
-          <input matInput placeholder="Marca" formControlName="brand">
-          <mat-error>
-            <span *ngIf="carForm.get('brand')?.invalid">Ingrese id válido</span>
-          </mat-error>
+        <input matInput placeholder="Marca" formControlName="brand">
+        <mat-error>
+          <span *ngIf="carForm.get('brand')?.invalid">Ingrese id válido</span>
+        </mat-error>
       </mat-form-field>
-  
+
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Modelo" formControlName="model">
         <mat-error>
           <span *ngIf="carForm.get('model')?.invalid">Ingrese modelo válido</span>
         </mat-error>
       </mat-form-field>
-  
+
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Año" formControlName="year">
         <mat-error>
@@ -48,31 +48,100 @@
         </mat-error>
       </mat-form-field>
 
-      <div class="button-row">
-        <button type="submit" [disabled]="!carForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
-        <button type="button" mat-flat-button color="primary" (click)="cancelEdit()">Cancel</button>      
-      </div>
-  
-  
     </form>
-  
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Propietario
+            </mat-panel-title>
+            <mat-panel-description>
+              Datos del Propietario
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <form class="example-full-width" [formGroup]="formOwner" (ngSubmit)="preOnFormSubmit()">
+            <formly-form [form]="formOwner" [fields]="fieldsOwner" [model]="modelOwner"></formly-form>
+            <div class="example-full-width">
+              <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
+              <button mat-raised-button type="submit" class="btn btn-success col-2"
+                [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
+            </div>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    <!-- <div class="container" formGroupName="owner">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Propietario
+              </mat-panel-title>
+              <mat-panel-description>
+                Datos del Propietario
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Nombres" formControlName="firstName">
+              <mat-error>
+                <span *ngIf="carForm.get('owner.firstName')?.invalid">Nombres</span>
+              </mat-error>
+            </mat-form-field>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <div class="container" formGroupName="documentation">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Documentación
+              </mat-panel-title>
+              <mat-panel-description>
+                Evaluación Documentación
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Patente" formControlName="vehiclePlate">
+              <mat-error>
+                <span *ngIf="carForm.get('documentation.vehiclePlate')?.invalid">Patente</span>
+              </mat-error>
+            </mat-form-field>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div> -->
+
+    <div class="button-row">
+      <button type="submit" [disabled]="!carForm.valid || !formOwner.valid" mat-flat-button color="primary">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button type="button" mat-flat-button color="primary" (click)="cancelEdit()">Cancel</button>
+    </div>
+
+
+
 
 
   </mat-card-content>
   <mat-card-actions>
 
-    <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">          
-      <label ><strong>Arrastra y suelta imágenes acá</strong></label>
-      <input hidden type="file" id ="file" multiple #fileInput class="inputfile" (change)="uploadFile($event)">
+    <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+      <label><strong>Arrastra y suelta imágenes acá</strong></label>
+      <input hidden type="file" id="file" multiple #fileInput class="inputfile" (change)="uploadFile($event)">
     </div>
-    <div  class="files-list" *ngFor="let file of files;let i= index">
+    <div class="files-list" *ngFor="let file of files;let i= index">
       <p> {{ file.name }} </p>
       <button class="delete-file" (click)="deleteAttachment(i)">
-        <mat-icon >delete</mat-icon>
+        <mat-icon>delete</mat-icon>
       </button>
     </div>
 
-
   </mat-card-actions>
-  </mat-card>
-  
+</mat-card>
