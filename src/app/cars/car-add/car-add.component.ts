@@ -27,26 +27,7 @@ export class CarAddComponent implements OnInit {
     // chassisNumber: new FormControl('', Validators.required),
     // motorNumber: new FormControl('', Validators.required),
     // autofactPrice: new FormControl('', Validators.required),
-    // publicationPrice: new FormControl('', Validators.required),
-    // owner: new FormGroup({
-    //   firstName: new FormControl('', Validators.required),
-      // lastName: new FormControl('', Validators.required),
-      // citizenShip: new FormControl('', Validators.required),
-      // birthDate: new FormControl('', Validators.required),
-      // address: new FormControl('', Validators.required),
-      // commune: new FormControl('', Validators.required),
-      // region: new FormControl('', Validators.required),
-      // country: new FormControl('', Validators.required),
-      // cellPhone: new FormControl('', Validators.required),
-      // responsibleName: new FormControl('', Validators.required),
-      // responsibleCellPhone: new FormControl('', Validators.required),
-      // publicAddress: new FormControl('', Validators.required),
-      // daysToShow: new FormControl('', Validators.required),
-      // hoursToShow: new FormControl('', Validators.required)
-    // }),
-    // documentation: new FormGroup({
-    //   vehiclePlate: new FormControl('', Validators.required),
-    // })
+    // publicationPrice: new FormControl('', Validators.required)
   });
 
   formTemplates!: FormTemplate[];
@@ -57,6 +38,11 @@ export class CarAddComponent implements OnInit {
 
   formOwner = new FormGroup({});
   formDocumentation = new FormGroup({});
+  formEquipment = new FormGroup({});
+  formIndoorConditions = new FormGroup({});
+  formElectricController = new FormGroup({});
+  formMechanicRevision = new FormGroup({});
+  formBodyworkEvaluation = new FormGroup({});
 
   options: FormlyFormOptions = {};
 
@@ -65,6 +51,21 @@ export class CarAddComponent implements OnInit {
 
   modelDocumentation = {};
   fieldsDocumentation: FormlyFieldConfig[] = [];
+
+  modelEquipment = {};
+  fieldsEquipment: FormlyFieldConfig[] = [];
+
+  modelIndoorConditions = {};
+  fieldsIndoorConditions: FormlyFieldConfig[] = [];
+
+  modelElectricController = {};
+  fieldsElectricController: FormlyFieldConfig[] = [];
+
+  modelBodyworkEvaluation = {};
+  fieldsBodyworkEvaluation: FormlyFieldConfig[] = [];
+
+  modelMechanicRevision = {};
+  fieldsMechanicRevision: FormlyFieldConfig[] = [];
 
   constructor(
     private router: Router,
@@ -81,15 +82,70 @@ export class CarAddComponent implements OnInit {
         console.log("data:", data);
         this.formTemplates = data;
 
-        let template = this.formTemplates.find(pr => pr.name == "owner")!;
+        this.loadFormTemplate("owner");
+        // let template = this.formTemplates.find(pr => pr.name == "owner")!;
 
-        this.fieldsOwner = JSON.parse(template.definition);
-        this.formOwner = new FormGroup({});
-        this.modelOwner = {};
+        // this.fieldsOwner = JSON.parse(template.definition);
+        // this.formOwner = new FormGroup({});
+        // this.modelOwner = {};
       }
 
     });
     this.isCompleted = false;
+  }
+
+  loadFormTemplate(name: string) {
+    let template = this.formTemplates.find(pr => pr.name == name)!;
+    console.log("template:", template);
+
+    switch (name) {
+      case "owner":
+        this.fieldsOwner = JSON.parse(template.definition);
+        this.formOwner = new FormGroup({});
+        this.modelOwner = {};
+        break;
+
+      case "documentation":
+        this.fieldsDocumentation = JSON.parse(template.definition);
+        this.formDocumentation = new FormGroup({});
+        this.modelDocumentation = {};
+        break;
+
+      case "equipment":
+        this.fieldsEquipment = JSON.parse(template.definition);
+        this.formEquipment = new FormGroup({});
+        this.modelEquipment = {};
+        break;
+
+      case "indoorConditions":
+        this.fieldsIndoorConditions = JSON.parse(template.definition);
+        this.formIndoorConditions = new FormGroup({});
+        this.modelIndoorConditions = {};
+        break;
+
+      case "electricController":
+        this.fieldsElectricController = JSON.parse(template.definition);
+        this.formElectricController = new FormGroup({});
+        this.modelElectricController = {};
+        break;
+
+      case "bodyworkEvaluation":
+        this.fieldsBodyworkEvaluation = JSON.parse(template.definition);
+        this.formBodyworkEvaluation = new FormGroup({});
+        this.modelBodyworkEvaluation = {};
+        break;
+
+      case "mechanicRevision":
+        this.fieldsMechanicRevision = JSON.parse(template.definition);
+        this.formMechanicRevision = new FormGroup({});
+        this.modelMechanicRevision = {};
+        break;
+
+      default:
+        break;
+    }
+
+
   }
 
   cancel() {

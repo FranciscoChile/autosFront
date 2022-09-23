@@ -50,73 +50,159 @@
 
     </form>
 
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Propietario
-            </mat-panel-title>
-            <mat-panel-description>
-              Datos del Propietario
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Propietario
+          </mat-panel-title>
+          <mat-panel-description>
+            Datos del Propietario
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-          <form class="example-full-width" [formGroup]="formOwner" (ngSubmit)="preOnFormSubmit()">
-            <formly-form [form]="formOwner" [fields]="fieldsOwner" [model]="modelOwner"></formly-form>
-            <div class="example-full-width">
+        <form class="example-full-width" [formGroup]="formOwner" (ngSubmit)="preOnFormSubmit()">
+          <formly-form [form]="formOwner" [fields]="fieldsOwner" [model]="modelOwner"></formly-form>
+          <!-- <div class="example-full-width">
               <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
               <button mat-raised-button type="submit" class="btn btn-success col-2"
                 [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
-            </div>
-          </form>
-        </mat-expansion-panel>
-      </mat-accordion>
+            </div> -->
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-    <!-- <div class="container" formGroupName="owner">
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Propietario
-              </mat-panel-title>
-              <mat-panel-description>
-                Datos del Propietario
-              </mat-panel-description>
-            </mat-expansion-panel-header>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Documentación
+          </mat-panel-title>
+          <mat-panel-description>
+            Documentación del Vehículo
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Nombres" formControlName="firstName">
-              <mat-error>
-                <span *ngIf="carForm.get('owner.firstName')?.invalid">Nombres</span>
-              </mat-error>
-            </mat-form-field>
+        <form class="example-full-width" [formGroup]="formDocumentation" (ngSubmit)="preOnFormSubmit()">
+          <formly-form [form]="formDocumentation" [fields]="fieldsDocumentation" [model]="modelDocumentation"></formly-form>
+          <!-- <div class="example-full-width">
+              <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
+              <button mat-raised-button type="submit" class="btn btn-success col-2"
+                [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
+            </div> -->
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Equipamiento
+          </mat-panel-title>
+          <mat-panel-description>
+            Equipamiento del Vehículo
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-      <div class="container" formGroupName="documentation">
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Documentación
-              </mat-panel-title>
-              <mat-panel-description>
-                Evaluación Documentación
-              </mat-panel-description>
-            </mat-expansion-panel-header>
+        <form class="example-full-width" [formGroup]="formEquipment" (ngSubmit)="preOnFormSubmit()">
+          <formly-form [form]="formEquipment" [fields]="fieldsEquipment" [model]="modelEquipment"></formly-form>
+          <!-- <div class="example-full-width">
+              <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
+              <button mat-raised-button type="submit" class="btn btn-success col-2"
+                [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
+            </div> -->
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Patente" formControlName="vehiclePlate">
-              <mat-error>
-                <span *ngIf="carForm.get('documentation.vehiclePlate')?.invalid">Patente</span>
-              </mat-error>
-            </mat-form-field>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Condiciones Interiores
+          </mat-panel-title>
+          <mat-panel-description>
+            Condiciones Interiores del Vehículo
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div> -->
+        <form class="example-full-width" [formGroup]="formIndoorConditions" (ngSubmit)="preOnFormSubmit()">
+          <formly-form [form]="formIndoorConditions" [fields]="fieldsIndoorConditions" [model]="modelIndoorConditions"></formly-form>
+          <!-- <div class="example-full-width">
+              <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
+              <button mat-raised-button type="submit" class="btn btn-success col-2"
+                [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
+            </div> -->
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Controles Eléctricos
+          </mat-panel-title>
+          <mat-panel-description>
+            Controles Eléctricos del Vehículo
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form class="example-full-width" [formGroup]="formElectricController" (ngSubmit)="preOnFormSubmit()">
+          <formly-form [form]="formElectricController" [fields]="fieldsElectricController" [model]="modelElectricController"></formly-form>
+          <!-- <div class="example-full-width">
+              <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
+              <button mat-raised-button type="submit" class="btn btn-success col-2"
+                [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
+            </div> -->
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Evaluación Carrocería
+          </mat-panel-title>
+          <mat-panel-description>
+            Evaluación Carrocería del Vehículo
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form class="example-full-width" [formGroup]="formBodyworkEvaluation" (ngSubmit)="preOnFormSubmit()">
+          <formly-form [form]="formBodyworkEvaluation" [fields]="fieldsBodyworkEvaluation" [model]="modelBodyworkEvaluation"></formly-form>
+          <!-- <div class="example-full-width">
+              <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
+              <button mat-raised-button type="submit" class="btn btn-success col-2"
+                [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
+            </div> -->
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Revisión Mecánica
+          </mat-panel-title>
+          <mat-panel-description>
+            Revisión Mecánica del Vehículo
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form class="example-full-width" [formGroup]="formMechanicRevision" (ngSubmit)="preOnFormSubmit()">
+          <formly-form [form]="formMechanicRevision" [fields]="fieldsMechanicRevision" [model]="modelMechanicRevision"></formly-form>
+          <!-- <div class="example-full-width">
+              <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
+              <button mat-raised-button type="submit" class="btn btn-success col-2"
+                [disabled]="!carForm.valid || !formOwner.valid">Guardar</button>
+            </div> -->
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
 
     <div class="button-row">
       <button type="submit" [disabled]="!carForm.valid || !formOwner.valid" mat-flat-button color="primary">
