@@ -9,8 +9,8 @@ import { environment } from './../../../environments/environment';
   providedIn: 'root'
 })
 export class CarsService {
-  
-  private apiUrl = environment.apiUrl;
+
+  private apiUrl = environment.apiUrl + "/cars";
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -18,7 +18,7 @@ export class CarsService {
   constructor(private http: HttpClient) { }
 
   getCars (): Observable<Car[]> {
-    return this.http.get<Car[]>(this.apiUrl, this.httpOptions)      
+    return this.http.get<Car[]>(this.apiUrl, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       );
@@ -36,11 +36,11 @@ export class CarsService {
     .pipe(
       catchError(this.errorHandler)
     )
-  }  
+  }
 
   createCarMultipleImages (car: any): Observable<any> {
     return this.http.post(this.apiUrl + "/car-multiple-images", car)
-    .pipe(      
+    .pipe(
       catchError(this.errorHandler)
     );
   }
