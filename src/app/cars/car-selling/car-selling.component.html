@@ -1,29 +1,215 @@
-<mat-progress-bar mode="indeterminate" *ngIf="isCompleted"></mat-progress-bar>
-<div class="content">
+<nav class="navbar-expand-lg" style="margin-top: 15px; height: 55px;">
+  <div class="container-fluid">
+    
+      <ul class="menu navbar-nav">
+        <li class="nav-item" style="margin-right: 40px;">
+          <a [routerLink]="['/']" >
+            <img src="../../../assets/images/mube-logo.png" style="width: 110px;" >
+          </a>  
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/add']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Vende tu auto</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/selling']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Compra un auto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo comprar?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo vender?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Financiamiento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Nosotros</a>
+        </li>
+        <li class="nav-item" style="margin-left: 40px;">
+          <a class="nav-link active opciones-menu-login" aria-current="page" href="#">Iniciar Sesión</a>
+        </li>
+      </ul>
 
-    <div class="parent">
-        <mat-form-field>        
-            <input type="tel" matInput placeholder="Buscar marco, modelo o año" name= "search" [(ngModel)]= "search">
-            <button matSuffix mat-button><mat-icon >search</mat-icon></button>
-        </mat-form-field>
+  </div>
+</nav>
+
+<div class="container-banner">
+  <img src="../../../assets/images/banner-selling.png" style="width: 100%;" >
+  <img class="imagen-encima" src="../../../../assets/images/home2/group-7@1x.svg" />
+  <div class="texto-encima-centrado-1">¡NO TE MUEVAS!</div>
+  <div class="texto-encima-centrado-2">Compra tu auto desde la comodidad de tu casa</div>
+</div>
+
+
+
+<div class="row height d-flex justify-content-center align-items-center" style="margin-top: 30px; width: 100%;">
+  <img src="../../../assets/images/filtro.png" style="width: auto;" >
+  Filtros
+  <div class="col-md-9">
+
+    <div class="search">      
+      <input type="text" class="form-control" placeholder="Buscar marco, modelo o año" name= "search" [(ngModel)]= "search">  
+      <button class="btn btn-light">Search</button>
     </div>
+    
+  </div>
+  
+</div>
 
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of carsDisplay | filter:search">
-        
-        <mat-card class="mat-elevation-z4" [routerLink] = "['/detail', car.id]" >
-          <img mat-card-image [src]="car.imgMain">
+<div class="container-elige">
+    Elige el modelo que buscas
+</div>
 
-          <mat-card-title>{{$any(car).brand}} <span> {{$any(car).model}} </span></mat-card-title>
-          <mat-card-subtitle>{{$any(car).year}} - {{$any(car).kilometers}}km - {{$any(car).transmission}}</mat-card-subtitle>
+<div class="container-filtro-autos">
+  <div>
+    <img src="../../../assets/images/auto1-filtro.png">Citycar
+  </div>
+  <div>
+    <img src="../../../assets/images/auto2-filtro.png">Eléctrico
+  </div>
+  <div>
+    <img src="../../../assets/images/auto3-filtro.png">Hatchback
+  </div>
+  <div>
+    <img src="../../../assets/images/auto4-filtro.png">Minivan
+  </div>
+  <div>
+    <img src="../../../assets/images/auto5-filtro.png">Pickup
+  </div>
+  <div>
+    <img src="../../../assets/images/auto6-filtro.png">Sedán
+  </div>
+  <div>
+    <img src="../../../assets/images/auto7-filtro.png">SUV
+  </div>
+</div>
 
-          <mat-card-content>
-            <p class="price"> $ {{$any(car).price | number:'3.0-0'}}
-            </p>
-          </mat-card-content>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of carsDisplay | filter:search">
 
-        </mat-card>
-      
+      <div class="card" [routerLink] = "['/detail', car.id]" >
+        <img [src]="car.imgMain">
+        <div class="card-body">
+          <h5 class="card-title">{{$any(car).brand}} <span> {{$any(car).model}} </span></h5>
+          <h4 class="card-title">{{$any(car).year}} - {{$any(car).kilometers}}km - {{$any(car).transmission}}</h4>
+          <p class="card-text price">
+            $ {{$any(car).price | number:'3.0-0'}}
+          </p>
+        </div>
       </div>
+
     </div>
   </div>
+</div>
+  
+
+<div class="flex-container">
+  <div class="flex-child">
+    <div class="overlap-group20">
+      <div class="ellipse-5"></div>
+      <img class="mask-group-1" src="../../../assets/images/home2/mask-group-9@1x.svg" />
+      <img class="rectangle-13" src="../../../assets/images/home2/rectangle-13@2x.svg" />
+    </div>
+  </div>
+
+  
+  <div class="flex-child">
+    <div class="servicio-garantizado montserrat-medium-blumine-40px-normal">Servicio garantizado</div>
+    <div class="flex-col-item-1 montserrat-medium-blumine-24px">
+      <div class="ellipse-7"></div>
+      Autos Inspeccionados
+    </div>
+    <p class="flex-col-item montserrat-medium-blumine">
+      Para tu tranquilidad nuestros expertos revisan detalladamente los autos
+    </p>
+    <div class="flex-col-item-1 montserrat-medium-blumine-24px">
+      <div class="ellipse-7"></div>
+        Resolvemos tus dudas
+    </div>
+    <p class="flex-col-item montserrat-medium-blumine">
+      Te acompañamos y asesoramos de forma online en todo momento
+    </p>
+    <div class="flex-col-item-1 montserrat-medium-blumine-24px">
+      <div class="ellipse-7"></div>
+        Transferencia de documentos garantizada<br />
+    </div>
+    <p class="flex-col-item montserrat-medium-blumine">
+      Disfruta de un proceso de transferencia sin complicaciones
+    </p>
+    <div class="flex-col-item-1 montserrat-medium-blumine-24px">
+      <div class="ellipse-7"></div>
+      Historia limpia
+    </div>
+    
+      <p class="flex-col-item montserrat-medium-blumine">
+        Todos los autos tienen su documentación al día
+      </p>
+    
+  </div>
+
+
+</div>
+
+
+<div class="home">
+  <div class="separador"></div>
+<div class="group-124">
+  <div class="flex-row-4">
+    <div class="flex-row-5 montserrat-bold-blumine-20px">
+      <div class="flex-col-4">
+        <img class="group-86" src="../../../../assets/images/home2/group-86@2x.svg" />
+        <div class="en-mube-queremos-hac montserrat-medium-white-20px">
+          <span class="montserrat-medium-blumine-20px">En </span
+          ><span class="montserrat-extra-bold-robins-egg-blue-20px">mube</span
+          ><span class="montserrat-medium-blumine-20px">
+            queremos hacer las cosas bien: facilitamos el camino usando tecnología para garantizar
+            experiencias cómodas y fluidas. Ayudamos a las personas a conseguir lo que buscan. Al que no
+            conozca el precio, lo ayudamos a definirlo. A quien no tiene recursos inmediatos, podemos
+            financiarlo</span
+          >
+        </div>
+      </div>
+      <div class="group-87">
+        <a href="home.html"><div class="place montserrat-bold-blumine-20px">Home</div> </a
+        ><a href="quiero-comprar.html"
+          ><div class="link montserrat-bold-blumine-20px">Comprar un auto</div>
+        </a>
+        <div class="vender-un-auto">Vender un auto</div>
+        <a href="financiamiento.html"><div class="link montserrat-bold-blumine-20px">Financiamiento</div> </a>
+        <div class="autos-garantizados">Autos garantizados</div>
+      </div>
+      <div class="group-88">
+        <div class="sobre-nosotros">Sobre nosotros</div>
+        <div class="cmo-funciona-mube">¿Cómo funciona mube?</div>
+        <a href="como-lo-hacemos.html"
+          ><div class="link montserrat-bold-blumine-20px">¿Cómo comprar?</div>
+        </a>
+        <div class="trminos-y-condiciones">Términos y condiciones</div>
+        <div class="aviso-de-privacidad">Aviso de privacidad</div>
+        <div class="fa-qs">FAQ’s</div>
+      </div>
+    </div>
+    <div class="flex-col-5">
+      <div class="contctanos montserrat-bold-blumine-24px">CONTÁCTANOS</div>
+      <div class="contactomubecl montserrat-normal-blumine-20px">contacto@mube.cl</div>
+      <div class="phone montserrat-normal-blumine-20px">+569 3254 1255</div>
+      
+      <div class="overlap-group-container">
+        <div class="overlap-group-2">
+          <div class="component-2">
+            <div class="cmo-comprar valign-text-middle gotham-bold-blumine-16px">Enviar correo</div>
+          </div>
+        </div>                
+      </div>
+
+    </div>
+  </div>
+  <div class="overlap-group11">
+    <div class="rectangle-68"></div>
+    <div class="x2022-todos-los-derechos-reservados montserrat-medium-white-20px-2">
+      2022 © Todos los derechos reservados
+    </div>
+  </div>
+</div>  
+</div>

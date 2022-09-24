@@ -15,23 +15,6 @@
 }
 
 
-a:link {
-    text-decoration: none;
-  }
-  
-  a:visited {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  a:active {
-    text-decoration: underline;
-  }
-
-
 .overlay.animate-appear {
   animation: reveal 0.3s ease-in-out 1 normal forwards;
   display: block;
@@ -57,68 +40,6 @@ a:link {
   align-self: flex-center;
 }
 
-.valign-text-middle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-
-
-::ng-deep :root { 
-    --alto: #d9d9d9;
-    --alto-2: #d9d9d980;
-    --astronaut-blue: #00385c;
-    --black: #000000;
-    --black-2: #00000005;
-    --black-3: #00000066;
-    --blumine: #1a5d71;
-    --bright-turquoise: #00dbdc;
-    --cultured-pearl: #f5f5f5;
-    --delta: #a2a2a2;
-    --ebony-clay: #263238;
-    --fuscous-gray: #5555551a;
-    --heat-wave: #ff7200;
-    --hint-of-red: #f9f9f9;
-    --international-orange: #fe5000;
-    --periglacial-blue: #e4e5d6;
-    --robins-egg-blue: #01b9c1;
-    --spring-green: #07fdaf;
-    --white: #ffffff;
-    --woody-brown: #422f2f;
-    --woody-brown-2: #412f2f;
-   
-    --font-size-l: 23px;
-    --font-size-m: 20px;
-    --font-size-s: 16px;
-    --font-size-xl: 24px;
-    --font-size-xs: 12px;
-    --font-size-xxl: 32px;
-    --font-size-xxxl: 40px;
-   
-    --font-family-gotham-bold: "Gotham-Bold", Helvetica;
-    --font-family-gotham_book-italic: "Gotham Book-Italic", Helvetica;
-    --font-family-montserrat: "Montserrat", Helvetica;
-    --font-family-nunito: "Nunito", Helvetica;
-    --font-family-poppins: "Poppins", Helvetica;
-  }
-
-  .montserrat-bold-blumine-20px {
-    color: var(--blumine);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 700;
-  }
-  
-  .montserrat-medium-blumine-20px {
-    color: var(--blumine);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 500;
-  }
   
   .gotham-bold-blumine-20px {
     color: var(--blumine);
@@ -152,13 +73,6 @@ a:link {
     font-weight: 700;
   }
   
-  .montserrat-normal-blumine-20px {
-    color: var(--blumine);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 400;
-  }
   
   .gotham-bold-robins-egg-blue-32px {
     color: var(--robins-egg-blue);
@@ -192,13 +106,6 @@ a:link {
     font-weight: 700;
   }
   
-  .montserrat-bold-blumine-24px {
-    color: var(--blumine);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-xl);
-    font-style: normal;
-    font-weight: 700;
-  }
   
   .montserrat-semi-bold-robins-egg-blue-20px {
     color: var(--robins-egg-blue);
@@ -216,13 +123,6 @@ a:link {
     font-weight: 500;
   }
   
-  .montserrat-medium-blumine-40px {
-    color: var(--blumine);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-xxxl);
-    font-style: normal;
-    font-weight: 500;
-  }
   
   .montserrat-bold-white-24px {
     color: var(--white);
@@ -269,31 +169,7 @@ a:link {
     font-size: var(--font-size-s);
     font-style: normal;
     font-weight: 500;
-  }
-  
-  .montserrat-medium-blumine-14px {
-    color: var(--blumine) !important;
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-xs);
-    font-style: normal;
-    font-weight: 500;
-  }
-
-  .montserrat-medium-blumine {
-    color: var(--blumine) !important;
-    font-family: var(--font-family-montserrat);
-    font-style: normal;
-    font-weight: 500;
-  }
-
-  .gotham-bold-blumine-16px {
-    color: var(--blumine);
-    font-family: var(--font-family-gotham-bold);
-    font-size: var(--font-size-s);
-    font-style: normal;
-    font-weight: 700;
-  }
-  
+  }  
   .montserrat-black-blumine-16px {
     color: var(--blumine);
     font-family: var(--font-family-montserrat);
@@ -310,51 +186,12 @@ a:link {
     font-weight: 500;
   }
   
-  .montserrat-medium-blumine-24px {
-    color: var(--blumine);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-xl);
-    font-style: normal;
-    font-weight: 500;
-  }
-  
   .nunito-normal-blumine-16px {
     color: var(--blumine);
     font-family: var(--font-family-nunito);
     font-size: var(--font-size-s);
     font-style: normal;
     font-weight: 400;
-  }
-  
-  .montserrat-medium-spring-green-20px {
-    color: var(--spring-green);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 500;
-  }
-  
-  .montserrat-medium-white-20px {
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 500;
-  }
-  
-  .montserrat-extra-bold-robins-egg-blue-20px {
-    color: var(--robins-egg-blue);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 800;
-  }
-  
-  .montserrat-medium-white-20px-2 {
-    color: var(--white);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 500;
   }
   
   .montserrat-medium-white-16px {
@@ -436,13 +273,6 @@ a:link {
     font-weight: 500;
   }
   
-  .montserrat-medium-blumine-16px {
-    color: var(--blumine);
-    font-family: var(--font-family-montserrat);
-    font-size: var(--font-size-s);
-    font-style: normal;
-    font-weight: 500;
-  }
   
   .gotham-bold-robins-egg-blue-20px {
     color: var(--robins-egg-blue);
@@ -510,14 +340,6 @@ a:link {
 
   
 /* screen - home */
-
-.home {
-    align-items: flex-start;
-    background-color: var(--white);
-    display: flex;
-    flex-direction: column;
-    font-size: xx-large;
-  }
   
   .home .logo {
     height: 37px;
