@@ -10,4 +10,7 @@ export class CarDisplayMain {
     transmission!: string;
     price!: number;
     year!: number;
+    fuel!: string;
+    type!: string;
+    engine!: string;
 }

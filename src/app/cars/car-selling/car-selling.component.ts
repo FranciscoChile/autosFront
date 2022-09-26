@@ -14,8 +14,22 @@ export class CarSellingComponent implements OnInit {
   cars: Car[]  = [];
   carsDisplay: CarDisplayMain[]  = [];
   search : any;
-  isCompleted:boolean = true;
+  isCompleted:boolean = true;  
   
+  filter = {};
+
+  fields = {
+    type: '',
+    priceFrom: '',
+    priceTo: '',
+    yearFrom: '',
+    yearTo: '',
+    brand: '',
+    fuel: '',
+    transmission: '',
+    engine: ''
+  };
+
   constructor(private api: CarsService) {}
 
   getCars(){
@@ -44,7 +58,7 @@ export class CarSellingComponent implements OnInit {
           c!.price = elem.price;
           c!.transmission = elem.transmission;
           c!.year = elem.year;
-  
+          c!.fuel = elem.fuel;
           return c!;        
           
         });
@@ -63,6 +77,12 @@ export class CarSellingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCars();
+  }
+
+  updateFilters() {
+    Object.keys(this.fields).forEach(
+      key => this.fields[key as keyof typeof this.fields] === '' ? delete this.fields[key as keyof typeof this.fields] : key);
+    this.filter = Object.assign({}, this.fields);
   }
 
 }

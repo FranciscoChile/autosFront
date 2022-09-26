@@ -53,6 +53,7 @@ import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { Home2Component } from './cars/home2/home2/home2.component';
+import { FilterCarSellingPipe } from './cars/car-selling/filter-car-selling.pipe';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { Home2Component } from './cars/home2/home2/home2.component';
     SignupComponent,
     LoginComponent,
     NotFoundComponent,
-    Home2Component
+    Home2Component,
+    FilterCarSellingPipe
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,10 @@ export class CarDetailComponent implements OnInit {
     kilometers: 0,
     transmission: '',
     price: 0,
-    year: 0
+    year: 0,
+    fuel: '',
+    type: '',
+    engine: ''
   };
 
   imageObject: ImageObject[]  = [];

@@ -40,15 +40,138 @@
   <div class="texto-encima-centrado-2">Compra tu auto desde la comodidad de tu casa</div>
 </div>
 
-
-
 <div class="row height d-flex justify-content-center align-items-center" style="margin-top: 30px; width: 100%;">
-  <img src="../../../assets/images/filtro.png" style="width: auto;" >
-  Filtros
-  <div class="col-md-9">
 
+      <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasNavbar" role="button" aria-controls="offcanvasNavbar" 
+      style="flex: 1; max-width: fit-content;">
+        <img src="../../../assets/images/filtro.png" style="width: auto;" >
+        Filtros      
+      </a>
+      
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="staticBackdropLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+          <div class="accordion" id="accordionExample">
+            
+            <div class="">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed titulo-menu" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  TIPO
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <input type="text" [(ngModel)]="fields.type" (ngModelChange)="updateFilters()" />
+                </div>
+              </div>
+            </div>
+
+            <p class="linea-menu"></p>
+
+            <div class="">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed titulo-menu" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  PRECIO
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body label-sub-filtro">
+                  Desde <input type="text" [(ngModel)]="fields.priceFrom" (ngModelChange)="updateFilters()" style="margin-right: 30px;" />
+                  Hasta <input type="text" [(ngModel)]="fields.priceTo" (ngModelChange)="updateFilters()" />
+                </div>
+              </div>
+            </div>
+            
+            <p class="linea-menu"></p>
+            
+            <div class="">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed titulo-menu" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  AÑO
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body label-sub-filtro">
+                  Desde <input type="text" [(ngModel)]="fields.yearFrom" (ngModelChange)="updateFilters()" style="margin-right: 30px;" />                  
+                  Hasta <input type="text" [(ngModel)]="fields.yearTo" (ngModelChange)="updateFilters()" />
+                </div>
+              </div>
+            </div>
+
+            <p class="linea-menu"></p>
+            
+            <div class="">
+              <h2 class="accordion-header" id="heading4">
+                <button class="accordion-button collapsed titulo-menu" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                  MARCA
+                </button>
+              </h2>
+              <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <input type="text" [(ngModel)]="fields.brand" (ngModelChange)="updateFilters()" />
+                </div>
+              </div>
+            </div>
+
+            <p class="linea-menu"></p>
+            
+            <div class="">
+              <h2 class="accordion-header" id="heading5">
+                <button class="accordion-button collapsed titulo-menu" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                  COMBUSTIBLE
+                </button>
+              </h2>
+              <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <input type="text" [(ngModel)]="fields.fuel" (ngModelChange)="updateFilters()" />
+                </div>
+              </div>
+            </div>
+
+            <p class="linea-menu"></p>
+            
+            <div class="">
+              <h2 class="accordion-header" id="heading6">
+                <button class="accordion-button collapsed titulo-menu" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                  TRANSMISIÓN
+                </button>
+              </h2>
+              <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <input type="text" [(ngModel)]="fields.transmission" (ngModelChange)="updateFilters()" />
+                </div>
+              </div>
+            </div>
+
+            <p class="linea-menu"></p>
+            
+            <div class="">
+              <h2 class="accordion-header" id="heading7">
+                <button class="accordion-button collapsed titulo-menu" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                  MOTOR
+                </button>
+              </h2>
+              <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <input type="text" [(ngModel)]="fields.engine" (ngModelChange)="updateFilters()" />
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+                    
+        </div>
+      </div>
+
+      
+  <div class="col-md-9">
     <div class="search">      
-      <input type="text" class="form-control" placeholder="Buscar marco, modelo o año" name= "search" [(ngModel)]= "search">  
+      <input type="text" class="form-control" placeholder="Buscar marca, modelo o año" name= "search" [(ngModel)]= "search">  
       <button class="btn btn-light">Search</button>
     </div>
     
@@ -86,7 +209,7 @@
 
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of carsDisplay | filter:search">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of carsDisplay | filterCarSelling : filter;">
 
       <div class="card" [routerLink] = "['/detail', car.id]" >
         <img [src]="car.imgMain">

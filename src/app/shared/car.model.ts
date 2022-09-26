@@ -9,5 +9,8 @@ export class Car {
     price!: number;
     img!: Array<CarImage>;
     transmission!: string;
+    fuel!: string;
+    type!: string;
+    engine!: string;
     
 }
