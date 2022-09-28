@@ -1,39 +1,235 @@
-<div class="content">
+<nav class="navbar-expand-lg" style="margin-top: 15px; height: 55px;">
+  <div class="container-fluid">
+    
+      <ul class="menu navbar-nav">
+        <li class="nav-item" style="margin-right: 40px;">
+          <a [routerLink]="['/']" >
+            <img src="../../../assets/images/mube-logo.png" style="width: 110px;" >
+          </a>  
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/add']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Vende tu auto</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/selling']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Compra un auto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo comprar?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo vender?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Financiamiento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Nosotros</a>
+        </li>
+        <li class="nav-item" style="margin-left: 40px;">
+          <a class="nav-link active opciones-menu-login" aria-current="page" href="#">Iniciar Sesión</a>
+        </li>
+      </ul>
 
-  <div fxLayout="row wrap" fxLayoutGap="30px" >
-    <div class="card-left">
-      <img  [src]="carDisplay.imgMain">
+  </div>
+</nav>
 
-      <ng-image-slider 
-      [images]="imageObject" 
-      [imageSize]="{width: 200}"
-      [manageImageRatio]="true"
-      #nav>
-      </ng-image-slider>  
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card border-0">
+        <div >
+          <img class="main-img"  [src]="carDisplay.imgMain">
+          <div class="d-grid gap-2 d-md-flex" style="margin-top: 10px; margin-bottom: 10px;">
+            <button type="button" class="btn btn-primary button-a border-0">GALERIA</button>
+            <button type="button" class="btn btn-primary button-b border-0">DAÑOS</button>
+          </div>
+        </div>        
+      </div>
+      <div class="card">
+        <div class="card-body">
+          Puede obtener este auto con financiamiento
+        </div>
+      </div>
+      <div class="card border-0" style="margin-top: 20px; margin-bottom: 10px;">
+        <div >
+          <div class="d-md-flex" >
+            <img src="../../../assets/images/home2/vector-20@2x.svg" >
+            <div class="card-left garantia-label">              
+              El {{carDisplay.brand}} {{carDisplay.model}} incluye una garantía de 3 meses gratis, 
+              inspeccionado por un profesional y al precio del mercado.
+            </div>
+            <button type="button" class="btn btn-light border-0 btn-sm" style="width: 45%;">VER FICHA TÉCNICA</button>
+          </div>
+        </div>
+      </div>      
+    </div>
+    <div class="col-sm-4">
+      <div class="card border-0">
+        <div class="card-body">
+          <p class="marca-anno">{{carDisplay.brand}} {{carDisplay.model}}  </p>
+          <p class="marca-anno">{{carDisplay.year}}</p>
+        </div>
+      </div>
+      <div class="card border-0" style="background: #FAFAFA;">
+        <div class="card-body" >
+          <p class="price-label">Precio</p>          
+          <p class="price">$ {{carDisplay.price | number:'3.0-0'}} </p>
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary button-a border-0">!ME INTERESA¡</button>
+            <button type="button" class="btn btn-primary button-b border-0">SIMULAR CRÉDITO</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0">
+        <img src="../../../assets/images/home2/rental-vehicle@2x.svg" >
+      </div>
 
     </div>
-    <div class="card-right">
-      <mat-card>
-      <mat-card-title>
-        <h1>
-        {{carDisplay.brand}} {{carDisplay.model}} {{carDisplay.year}} 
-        </h1>
-      </mat-card-title>
-
-
-      </mat-card>
-      <mat-card>
-        Precio
-        <mat-card-title class="price">
-          $ {{carDisplay.price | number:'3.0-0'}} CLP
-        </mat-card-title>
-        <mat-card-content>
-          <div class="button-row">
-            <button mat-raised-button color="primary">Pedir Informes</button>
-            <button mat-raised-button color="primary">Simular Créditos</button>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div> 
   </div>
-</div> 
+
+  <div class="row">
+    <div class="col-sm d-grid d-md-flex" style="gap: 3.5rem;">
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Tipo {{carDisplay.type}}</div>        
+      </div> 
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Pasajeros</div>
+      </div> 
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Puertas</div>
+      </div> 
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Kms</div>
+      </div> 
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Año {{carDisplay.year}}</div>
+      </div> 
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Combustible {{carDisplay.fuel}}</div>
+      </div> 
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Transmisión {{carDisplay.transmission}}</div>
+      </div> 
+
+      <div class="container-button">
+        <img src="../../../assets/images/rounded.png" style="width:100%;">
+        <div class="text-block">Motor {{carDisplay.engine}}</div>
+      </div> 
+
+    </div>    
+  </div>
+</div>
+
+<div class="equip-bar">
+  EQUIPAMIENTO
+</div>
+
+<div class="container-garantia-bar">
+  <div class="garantia-bar">
+    <p class="titulo-garantia-bar">Garantía Mube</p>    
+    <p class="texto-garantia-bar">
+      Este automóvil fue inspeccionado en más de 350 puntos, con los mayores estándares de calidad. Por eso es que tiene una garantía mecáncia de 3 meses que es extendible hasta 15.
+    </p>
+  </div>  
+</div>
+
+<div class="row consejos">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Garantizamos que cada auto usado tiene:</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>        
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Sigue estos consejos de seguridad</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>        
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <img src="../../../assets/images/home2/rectangle@2x.png" style="width: 70%;" >
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+
+  <div class="flex-row-4" style="margin-left: 20px; margin-right: 20px;">
+    <div class="flex-row-5 montserrat-bold-blumine-20px">
+      <div class="flex-col-4">
+        <img class="group-86" src="../../../../assets/images/home2/group-86@2x.svg" />
+        <div class="en-mube-queremos-hac montserrat-medium-white-20px">
+          <span class="montserrat-medium-blumine-20px">En </span
+          ><span class="montserrat-extra-bold-robins-egg-blue-20px">mube</span
+          ><span class="montserrat-medium-blumine-20px">
+            queremos hacer las cosas bien: facilitamos el camino usando tecnología para garantizar
+            experiencias cómodas y fluidas. Ayudamos a las personas a conseguir lo que buscan. Al que no
+            conozca el precio, lo ayudamos a definirlo. A quien no tiene recursos inmediatos, podemos
+            financiarlo</span
+          >
+        </div>
+      </div>
+      <div class="group-87">
+        <a href="home.html"><div class="place montserrat-bold-blumine-20px">Home</div> </a
+        ><a href="quiero-comprar.html"
+          ><div class="link montserrat-bold-blumine-20px">Comprar un auto</div>
+        </a>
+        <div class="vender-un-auto">Vender un auto</div>
+        <a href="financiamiento.html"><div class="link montserrat-bold-blumine-20px">Financiamiento</div> </a>
+        <div class="autos-garantizados">Autos garantizados</div>
+      </div>
+      <div class="group-88">
+        <div class="sobre-nosotros">Sobre nosotros</div>
+        <div class="cmo-funciona-mube">¿Cómo funciona mube?</div>
+        <a href="como-lo-hacemos.html"
+          ><div class="link montserrat-bold-blumine-20px">¿Cómo comprar?</div>
+        </a>
+        <div class="trminos-y-condiciones">Términos y condiciones</div>
+        <div class="aviso-de-privacidad">Aviso de privacidad</div>
+        <div class="fa-qs">FAQ’s</div>
+      </div>
+    </div>
+    <div class="flex-col-5">
+      <div class="contctanos montserrat-bold-blumine-24px">CONTÁCTANOS</div>
+      <div class="contactomubecl montserrat-normal-blumine-20px">contacto@mube.cl</div>
+      <div class="phone montserrat-normal-blumine-20px">+569 3254 1255</div>
+      
+      <div class="overlap-group-container">
+        <div class="overlap-group-2">
+          <div class="component-2">
+            <div class="cmo-comprar valign-text-middle gotham-bold-blumine-16px">Enviar correo</div>
+          </div>
+        </div>                
+      </div>
+
+    </div>
+  </div>
+  <div class="overlap-group11">
+    <div class="rectangle-68"></div>
+    <div class="x2022-todos-los-derechos-reservados montserrat-medium-white-20px-2">
+      2022 © Todos los derechos reservados
+    </div>
+  </div>

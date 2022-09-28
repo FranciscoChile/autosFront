@@ -4,32 +4,18 @@
     padding-right: 50px;
 }
 
-img {
+.main-img {
     border-radius: 4px;
     object-fit: contain;
     width: 100%;
 }
 
 .card-left {
-    width: 60%;
+    width: 70%;
 }
 
 .card-right {
     width: 30%;
-}
-
-.mat-card-title h1 {
-    line-height: 1.25;
-    font-weight: 900;
-    font-size: 1.8rem;
-}
-
-.price {
-    margin-bottom: 30px;
-}
-
-.mat-card {
-    margin-bottom: 20px;
 }
 
 .button-row {
@@ -41,6 +27,183 @@ img {
     margin: 8px 8px 8px 0;
 }
 
-button {
+ul.menu { 
+    display: flex;
+}
+  
+ul.menu li { 
+    display: flex;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    justify-content: center;
+}
+
+.marca-anno {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 119.4%;
+    color: #1A5D71;
+}
+
+.price-label {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 88.4%;
+    color: #1A5D71;
+}
+
+.price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 88.4%;
+    color: #263238;
+}
+
+.button-a {
+    background: #07FDAF;
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1A5D71;
     width: 100%;
+}
+
+.button-a:hover {
+    background: #07FDAF;
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1A5D71;
+}
+
+.button-b {
+    background: #1A5D71;
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.button-b:hover {
+    background: #1A5D71;
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.garantia-label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: #1A5D71;
+    margin-left: 10px;
+}
+
+.container-button {
+    position: relative;
+    width: 8%;
+}
+  
+.text-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 27px;
+    white-space: initial;
+    color: #1A5D71;
+}
+
+.equip-bar {
+    width: 350px;
+    background: #1A5D71;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 44px;
+
+    text-align: center;
+    color: #FFFFFF;
+
+    margin-top: 40px;
+}
+
+.container-garantia-bar {
+    width: 70%;
+    background: #1A5D71;
+    margin-top: 80px;
+}
+
+.garantia-bar {    
+    padding: 20px 100px 10px 100px;
+}
+
+.titulo-garantia-bar {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 170%;
+    display: flex;
+    align-items: center;
+    color: #07FDAF;
+}
+
+.texto-garantia-bar {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 170%;    
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.consejos {
+    height: 380px;
+    background: #01B9C1;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.consejos-img {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+}
+
+.consejos-img img{
+    width: 20%;
 }

@@ -1,27 +1,26 @@
-<mat-card>
-    <mat-card-title>Login</mat-card-title>
-<mat-card-content>
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <p>
-    <mat-form-field>
-      <input type="text" matInput placeholder="Username" formControlName="username">
-    </mat-form-field>
-  </p>
+<div class="card" style="width: 18rem;">
+  <h5 class="card-title">Login</h5>
+  <div class="card-body">
 
-  <p>
-    <mat-form-field>
-      <input type="password" matInput placeholder="Password" formControlName="password">
-    </mat-form-field>
-  </p>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <p>        
+          <input type="text" class="form-control" placeholder="Username" formControlName="username">        
+      </p>
 
-  <mat-error *ngIf="!loginValid">
-    Usuario y password incorrecto
-  </mat-error>
+      <p>        
+          <input type="password" class="form-control" placeholder="Password" formControlName="password">        
+      </p>
 
-  <div class="button">
-    <button type="submit" mat-flat-button color="primary">Login</button>
-  </div>
+      <p *ngIf="!loginValid">
+        Usuario y password incorrecto
+      </p>
 
-</form>
-</mat-card-content>
-</mat-card>
+      <div class="button">
+        <button type="submit" class="btn btn-light">Login</button>
+      </div>
+
+    </form>
+
+</div>
+
+</div>
