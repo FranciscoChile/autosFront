@@ -207,3 +207,15 @@ ul.menu li {
 .consejos-img img{
     width: 20%;
 }
+
+.titulo {
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 106.9%;
+/* or 34px */
+
+
+color: #FFFFFF;
+}

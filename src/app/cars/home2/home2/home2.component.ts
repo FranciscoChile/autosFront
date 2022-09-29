@@ -12,7 +12,7 @@ export class Home2Component implements OnInit {
 
   gridColumns = 4;
   carsDisplay: CarDisplayMain[]  = [];
-  isCompleted:boolean = true;  
+  isCompleted:boolean = true;
 
   constructor(private api: CarsService) { }
 
@@ -56,7 +56,6 @@ export class Home2Component implements OnInit {
     });
 
   }
-
 
   ngOnInit(): void {
     this.getCars();

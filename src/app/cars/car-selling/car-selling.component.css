@@ -329,3 +329,47 @@ ul.menu li {
 
     color: #422F2F;
   }
+
+.my-pagination ::ng-deep .ngx-pagination .pagination-next {
+    background-color: var(--robins-egg-blue);
+    border-radius: 10px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .pagination-previous  {
+    background-color: var(--robins-egg-blue);
+    border-radius: 10px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current  {
+    background-color: #07FDAF;
+    color: black;
+
+}
+
+
+.titleh5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 18px;
+    line-height: 88.4%;
+    color: #1A5D71;
+  }
+  
+  .titleh4 {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 88.4%;
+    color: #00385C;
+  }
+  
+  .price {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 88.4%;
+    color: #01B9C1;
+    margin-top: px;
+  }

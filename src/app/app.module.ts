@@ -54,6 +54,7 @@ import { LoginComponent } from './users/login/login.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { Home2Component } from './cars/home2/home2/home2.component';
 import { FilterCarSellingPipe } from './cars/car-selling/filter-car-selling.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,7 @@ import { FilterCarSellingPipe } from './cars/car-selling/filter-car-selling.pipe
     MatSlideToggleModule, MatGridListModule, MatExpansionModule,
     FormsModule, ReactiveFormsModule,
     Ng2SearchPipeModule, MatSnackBarModule, NgImageSliderModule,
-    MatDatepickerModule, MatNativeDateModule,
+    MatDatepickerModule, MatNativeDateModule, NgxPaginationModule,
     FormlyModule.forRoot({
       extras: {
         lazyRender: true

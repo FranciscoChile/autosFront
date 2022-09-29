@@ -30,6 +30,10 @@ export class CarSellingComponent implements OnInit {
     engine: ''
   };
 
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 12;
+
   constructor(private api: CarsService) {}
 
   getCars(){
@@ -83,6 +87,17 @@ export class CarSellingComponent implements OnInit {
     Object.keys(this.fields).forEach(
       key => this.fields[key as keyof typeof this.fields] === '' ? delete this.fields[key as keyof typeof this.fields] : key);
     this.filter = Object.assign({}, this.fields);
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getCars();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getCars();
   }
 
 }

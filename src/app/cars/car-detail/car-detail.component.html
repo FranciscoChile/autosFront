@@ -8,25 +8,25 @@
           </a>  
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/add']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Vende tu auto</a>
-        </li>
-        <li class="nav-item">
           <a [routerLink]="['/selling']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Compra un auto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo comprar?</a>
+          <a style="visibility: hidden;" [routerLink]="['/add']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Vende tu auto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo vender?</a>
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo comprar?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Financiamiento</a>
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo vender?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Nosotros</a>
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Financiamiento</a>
+        </li>
+        <li class="nav-item">
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Nosotros</a>
         </li>
         <li class="nav-item" style="margin-left: 40px;">
-          <a class="nav-link active opciones-menu-login" aria-current="page" href="#">Iniciar Sesión</a>
+          <a style="visibility: hidden;" class="nav-link active opciones-menu-login" aria-current="page" href="#">Iniciar Sesión</a>
         </li>
       </ul>
 
@@ -40,9 +40,13 @@
       <div class="card border-0">
         <div >
           <img class="main-img"  [src]="carDisplay.imgMain">
-          <div class="d-grid gap-2 d-md-flex" style="margin-top: 10px; margin-bottom: 10px;">
-            <button type="button" class="btn btn-primary button-a border-0">GALERIA</button>
-            <button type="button" class="btn btn-primary button-b border-0">DAÑOS</button>
+          <div class="d-grid gap-2" style="margin-top: 10px; margin-bottom: 10px;">
+            <ng-image-slider 
+            [images]="imageObject" 
+            [imageSize]="{width: 200}"
+            [manageImageRatio]="true"
+            #nav>
+            </ng-image-slider>   
           </div>
         </div>        
       </div>
@@ -76,8 +80,11 @@
           <p class="price-label">Precio</p>          
           <p class="price">$ {{carDisplay.price | number:'3.0-0'}} </p>
           <div class="d-grid gap-2">
-            <button type="button" class="btn btn-primary button-a border-0">!ME INTERESA¡</button>
-            <button type="button" class="btn btn-primary button-b border-0">SIMULAR CRÉDITO</button>
+            <button type="button" class="btn btn-primary button-a border-0" 
+            data-bs-toggle="modal" data-bs-target="#modalContact">
+              !ME INTERESA¡
+            </button>
+            <button style="visibility: hidden;" type="button" class="btn btn-primary button-b border-0">SIMULAR CRÉDITO</button>
           </div>
         </div>
       </div>
@@ -149,32 +156,60 @@
   </div>  
 </div>
 
-<div class="row consejos">
-  <div class="col-sm-4">
-    <div class="card">
+
+  
+<div class="consejos">
+  <div class="container" >
+    <div class="row align-items-start">
+  
+
+  <div class="col-sm">
+    <div class="card" style="background: none; border: 1px solid black; width: 400px; height: 260px;">
       <div class="card-body">
-        <h5 class="card-title">Garantizamos que cada auto usado tiene:</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>        
+        <p class="card-title titulo">Garantizamos que cada auto usado tiene:</p>
+        <div class="row" style="line-height: 30px;">
+          <div class="col" style="font-size: smaller;">
+            <p>Documentación Verificada</p>            
+            <p>Kilometraje real sin alteración</p>            
+            <p>Sin reparaciones en estructura</p>            
+            <p>Garantía 3 meses</p>            
+          </div>
+          <div class="col" style="font-size: smaller;">
+            <p>Sistema eléctrico</p>            
+            <p>Dirección y Suspensión</p>            
+            <p>Apariencia y Carrocería</p>            
+          </div>    
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="card">
+
+  <div class="col-sm">
+    <div class="card mx-auto" style="background: none; border: 1px solid black; width: 300px; height: 260px;">
       <div class="card-body">
-        <h5 class="card-title">Sigue estos consejos de seguridad</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>        
+        <p class="card-title titulo">Sigue estos consejos de seguridad</p>
+        <p class="card-text" style="font-size: smaller;">
+            Nunca te pediremos dinero por adelantado por la compra de tu auto.
+        </p>
+        <p class="card-text" style="font-size: smaller;">        
+            Nunca te solicitaremos que reveles tus datos personales por ningún medio.  
+        </p>
+        <p class="card-text" style="font-size: smaller;">
+            Nunca te pediremos claves de correo, cuenta bancaria, códigos de Whatsapp ni de tus redes sociales.          
+        </p>        
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="card text-center">
-      <div class="card-body">
-        <img src="../../../assets/images/home2/rectangle@2x.png" style="width: 70%;" >
-      </div>
+  
+  <div class="col-sm">
+    <div class="card" style="background: none; border: 0px;">
+      <img src="../../../assets/images/home2/rectangle@2x.png" style="width: 78%;" >
     </div>
   </div>  
-</div>
 
+</div>
+</div>
+</div>
 
 
   <div class="flex-row-4" style="margin-left: 20px; margin-right: 20px;">
@@ -233,3 +268,20 @@
       2022 © Todos los derechos reservados
     </div>
   </div>
+
+
+  <div class="modal fade" id="modalContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title fs-4" id="exampleModalLabel">Contáctanos</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body fs-6" style="text-align: center;">
+          <div>contacto@mube.cl</div>
+          <div>+569 3254 1255</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

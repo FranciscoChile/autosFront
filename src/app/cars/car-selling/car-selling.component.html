@@ -8,25 +8,25 @@
           </a>  
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/add']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Vende tu auto</a>
-        </li>
-        <li class="nav-item">
           <a [routerLink]="['/selling']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Compra un auto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo comprar?</a>
+          <a style="visibility: hidden;" [routerLink]="['/add']" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Vende tu auto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo vender?</a>
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo comprar?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Financiamiento</a>
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">¿Cómo vender?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Nosotros</a>
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Financiamiento</a>
+        </li>
+        <li class="nav-item">
+          <a style="visibility: hidden;" class="nav-link active montserrat-medium-bluminepx" aria-current="page" href="#">Nosotros</a>
         </li>
         <li class="nav-item" style="margin-left: 40px;">
-          <a class="nav-link active opciones-menu-login" aria-current="page" href="#">Iniciar Sesión</a>
+          <a style="visibility: hidden;" class="nav-link active opciones-menu-login" aria-current="page" href="#">Iniciar Sesión</a>
         </li>
       </ul>
 
@@ -209,15 +209,24 @@
 
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of carsDisplay | filterCarSelling : filter;">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" 
+    *ngFor="let car of carsDisplay | filterCarSelling : filter | paginate
+      : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totalItems: count
+      };">
 
-      <div class="card" [routerLink] = "['/detail', car.id]" >
-        <img [src]="car.imgMain">
+      <div class="card" style="width: 16rem;" [routerLink] = "['/detail', car.id]" >
+        <img class="rounded-top" [src]="car.imgMain">
         <div class="card-body">
-          <h5 class="card-title">{{$any(car).brand}} <span> {{$any(car).model}} </span></h5>
-          <h4 class="card-title">{{$any(car).year}} - {{$any(car).kilometers}}km - {{$any(car).transmission}}</h4>
-          <p class="card-text price">
+          <h5 class="titleh5"><span style="font-weight: bold;">{{$any(car).brand}} {{$any(car).model}} |</span> {{$any(car).year}}</h5>
+          <p class="titleh4">{{$any(car).kilometers}}km - {{$any(car).fuel}} - {{$any(car).transmission}}</p>
+          <p class="price">
             $ {{$any(car).price | number:'3.0-0'}}
+          </p>
+          <p class="titleh4">
+            Sujeto a financiamiento
           </p>
         </div>
       </div>
@@ -225,7 +234,17 @@
     </div>
   </div>
 </div>
-  
+
+<div class="d-flex justify-content-center">
+  <pagination-controls
+    class="my-pagination"
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>
+
 
 <div class="flex-container">
   <div class="flex-child">
