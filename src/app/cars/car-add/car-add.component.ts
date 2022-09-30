@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CarsService } from '../services/cars.service';
@@ -7,6 +7,12 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { FormlyFieldConfig, FormlyFormBuilder, FormlyFormOptions } from '@ngx-formly/core';
 import Swal from 'sweetalert2';
 import { FormTemplate } from 'src/app/shared/form-template.model';
+import {
+  CdkDragDrop,
+  CdkDragEnter,
+  CdkDragMove,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-car-add',
@@ -14,6 +20,75 @@ import { FormTemplate } from 'src/app/shared/form-template.model';
   styleUrls: ['./car-add.component.css']
 })
 export class CarAddComponent implements OnInit {
+  @ViewChild('dropListContainer') dropListContainer?: ElementRef;
+
+  dropListReceiverElement?: HTMLElement;
+  dragDropInfo?: {
+    dragIndex: number;
+    dropIndex: number;
+  };
+
+  add() {
+    this.files.push(this.files.length + 1);
+  }
+
+  shuffle() {
+    this.files.sort(function () {
+      return 0.5 - Math.random();
+    });
+  }
+
+  dragEntered(event: CdkDragEnter<number>) {
+    const drag = event.item;
+    const dropList = event.container;
+    const dragIndex = drag.data;
+    const dropIndex = dropList.data;
+
+    this.dragDropInfo = { dragIndex, dropIndex };
+    console.log('dragEntered', { dragIndex, dropIndex });
+
+    const phContainer = dropList.element.nativeElement;
+    const phElement = phContainer.querySelector('.cdk-drag-placeholder');
+
+    if (phElement) {
+      phContainer.removeChild(phElement);
+      phContainer.parentElement?.insertBefore(phElement, phContainer);
+
+      moveItemInArray(this.files, dragIndex, dropIndex);
+      moveItemInArray(this.filesToDisplay, dragIndex, dropIndex);
+    }
+  }
+
+  dragMoved(event: CdkDragMove<number>) {
+    if (!this.dropListContainer || !this.dragDropInfo) return;
+
+    const placeholderElement =
+      this.dropListContainer.nativeElement.querySelector(
+        '.cdk-drag-placeholder'
+      );
+
+    const receiverElement =
+      this.dragDropInfo.dragIndex > this.dragDropInfo.dropIndex
+        ? placeholderElement?.nextElementSibling
+        : placeholderElement?.previousElementSibling;
+
+    if (!receiverElement) {
+      return;
+    }
+
+    receiverElement.style.display = 'none';
+    this.dropListReceiverElement = receiverElement;
+  }
+
+  dragDropped(event: CdkDragDrop<number>) {
+    if (!this.dropListReceiverElement) {
+      return;
+    }
+
+    this.dropListReceiverElement.style.removeProperty('display');
+    this.dropListReceiverElement = undefined;
+    this.dragDropInfo = undefined;
+  }
 
   carForm = new FormGroup({
     brand: new FormControl('', Validators.required),
@@ -79,7 +154,6 @@ export class CarAddComponent implements OnInit {
     console.log("ejecutando on init");
     this.ftService.getFormTemplates().subscribe(data => {
       if (data && data.length > 0) {
-        console.log("data:", data);
         this.formTemplates = data;
 
         this.loadFormTemplate("owner");
@@ -96,7 +170,6 @@ export class CarAddComponent implements OnInit {
 
   loadFormTemplate(name: string) {
     let template = this.formTemplates.find(pr => pr.name == name)!;
-    console.log("template:", template);
 
     switch (name) {
       case "owner":
@@ -200,17 +273,25 @@ export class CarAddComponent implements OnInit {
   }
 
   uploadFile(event: any) {
-
     const result = event;
+    const reader = new FileReader();
 
     if (result != null) {
+      console.log("(file) result: ", result);
 
       if (result.length != null) {
+        console.log("uno");
         for (let index = 0; index < result.length; index++) {
           const element = result[index];
+          reader.readAsDataURL(element);
+          reader.onload = () => {
+            const imageSrc = reader.result as string;
+            this.filesToDisplay.push(imageSrc);
+          };
           this.files.push(element)
         }
       } else {
+        console.log("dos");
         const files = event.target.files;
         for (let index = 0; index < files.length; index++) {
           const element = files[index];
@@ -222,7 +303,8 @@ export class CarAddComponent implements OnInit {
   }
 
   deleteAttachment(index: any) {
-    this.files.splice(index, 1)
+    this.files.splice(index, 1);
+    this.filesToDisplay.splice(index, 1);
   }
 
   cancelEdit() {

@@ -84,7 +84,8 @@
         </mat-expansion-panel-header>
 
         <form class="example-full-width" [formGroup]="formDocumentation" (ngSubmit)="preOnFormSubmit()">
-          <formly-form [form]="formDocumentation" [fields]="fieldsDocumentation" [model]="modelDocumentation"></formly-form>
+          <formly-form [form]="formDocumentation" [fields]="fieldsDocumentation" [model]="modelDocumentation">
+          </formly-form>
           <!-- <div class="example-full-width">
               <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
               <button mat-raised-button type="submit" class="btn btn-success col-2"
@@ -128,7 +129,8 @@
         </mat-expansion-panel-header>
 
         <form class="example-full-width" [formGroup]="formIndoorConditions" (ngSubmit)="preOnFormSubmit()">
-          <formly-form [form]="formIndoorConditions" [fields]="fieldsIndoorConditions" [model]="modelIndoorConditions"></formly-form>
+          <formly-form [form]="formIndoorConditions" [fields]="fieldsIndoorConditions" [model]="modelIndoorConditions">
+          </formly-form>
           <!-- <div class="example-full-width">
               <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
               <button mat-raised-button type="submit" class="btn btn-success col-2"
@@ -150,7 +152,8 @@
         </mat-expansion-panel-header>
 
         <form class="example-full-width" [formGroup]="formElectricController" (ngSubmit)="preOnFormSubmit()">
-          <formly-form [form]="formElectricController" [fields]="fieldsElectricController" [model]="modelElectricController"></formly-form>
+          <formly-form [form]="formElectricController" [fields]="fieldsElectricController"
+            [model]="modelElectricController"></formly-form>
           <!-- <div class="example-full-width">
               <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
               <button mat-raised-button type="submit" class="btn btn-success col-2"
@@ -172,7 +175,8 @@
         </mat-expansion-panel-header>
 
         <form class="example-full-width" [formGroup]="formBodyworkEvaluation" (ngSubmit)="preOnFormSubmit()">
-          <formly-form [form]="formBodyworkEvaluation" [fields]="fieldsBodyworkEvaluation" [model]="modelBodyworkEvaluation"></formly-form>
+          <formly-form [form]="formBodyworkEvaluation" [fields]="fieldsBodyworkEvaluation"
+            [model]="modelBodyworkEvaluation"></formly-form>
           <!-- <div class="example-full-width">
               <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
               <button mat-raised-button type="submit" class="btn btn-success col-2"
@@ -194,7 +198,8 @@
         </mat-expansion-panel-header>
 
         <form class="example-full-width" [formGroup]="formMechanicRevision" (ngSubmit)="preOnFormSubmit()">
-          <formly-form [form]="formMechanicRevision" [fields]="fieldsMechanicRevision" [model]="modelMechanicRevision"></formly-form>
+          <formly-form [form]="formMechanicRevision" [fields]="fieldsMechanicRevision" [model]="modelMechanicRevision">
+          </formly-form>
           <!-- <div class="example-full-width">
               <button mat-raised-button type="button" class="btn btn-danger col-2" (click)="cancel()">Cancelar</button>
               <button mat-raised-button type="submit" class="btn btn-success col-2"
@@ -211,23 +216,26 @@
       <button type="button" mat-flat-button color="primary" (click)="cancelEdit()">Cancel</button>
     </div>
 
-
-
-
-
   </mat-card-content>
-  <mat-card-actions>
 
+  <mat-card-actions>
     <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
       <label><strong>Arrastra y suelta imágenes acá</strong></label>
       <input hidden type="file" id="file" multiple #fileInput class="inputfile" (change)="uploadFile($event)">
     </div>
-    <div class="files-list" *ngFor="let file of files;let i= index">
-      <p> {{ file.name }} </p>
-      <button class="delete-file" (click)="deleteAttachment(i)">
-        <mat-icon>delete</mat-icon>
-      </button>
+    <div #dropListContainer class="example-container" cdkDropListGroup>
+      <div *ngFor="let file of files;let i= index" cdkDropList [cdkDropListData]="i">
+        <div cdkDrag [cdkDragData]="i" (cdkDragEntered)="dragEntered($event)" (cdkDragMoved)="dragMoved($event)"
+          (cdkDragDropped)="dragDropped($event)" class="example-box">
+          <!-- <p> {{ file.name }} - {{ i }} - {{ filesToDisplay.length }} </p> -->
+          <p> {{ file.name }} </p>
+          <img [src]="filesToDisplay[i]" style="height: 300px; width:500px">
+          <button class="delete-file" (click)="deleteAttachment(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
-
   </mat-card-actions>
+
 </mat-card>
