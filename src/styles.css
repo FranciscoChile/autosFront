@@ -148,6 +148,14 @@ html, body { height: 100%; }
     font-weight: 700;
   }
 
+  .montserrat-bold-blumine-16px {
+    color: var(--blumine);
+    font-family: var(--font-family-montserrat);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
   .montserrat-bold-blumine-24px {
     color: var(--blumine);
     font-family: var(--font-family-montserrat);
@@ -170,15 +178,6 @@ html, body { height: 100%; }
     font-size: var(--font-size-s);
     font-style: normal;
     font-weight: 700;
-  }
-
-
-  .home {
-    align-items: flex-start;
-    background-color: var(--white);
-    display: flex;
-    flex-direction: column;
-    font-size: xx-large;
   }
 
   .valign-text-middle {
@@ -242,16 +241,6 @@ html, body { height: 100%; }
   margin-top: 20px;
   min-height: 327px;
   width: 310px;
-}
-
-.overlap-group11 {
-  height: 79px;
-  margin-top: 106px;
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .cmo-comprar {
