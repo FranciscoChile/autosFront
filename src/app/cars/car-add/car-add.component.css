@@ -1,21 +1,21 @@
-  
+
   .example-full-width {
     width: 50%;
   }
-  
+
   .example-full-width:nth-last-child {
     margin-bottom: 10px;
   }
-  
+
   .button-row {
     margin: 10px 0;
   }
-  
+
   .mat-flat-button {
     margin: 5px;
   }
-  
-  
+
+
   .uploadfilecontainer {
     text-align: center;
     background-repeat: no-repeat;
@@ -25,13 +25,13 @@
     border-radius: 10px;
     padding: 2rem 1.25rem;
   }
-  
+
   .uploadfilecontainer:hover {
     cursor: pointer;
     background-color: #9ecbec !important;
     opacity: 0.8;
   }
-  
+
   .files-list {
     display: flex;
     justify-content: space-between;
@@ -43,17 +43,17 @@
     padding: 5px;
     color: #1c8adb;
   }
-  
+
   .files-list .delete-file {
     background: transparent;
     border: none;
     cursor: pointer;
   }
-  
+
   .files-list .delete-file img {
     width: 30px;
   }
-  
+
   .uploadfilecontainer label {
     color: #d3394c;
     cursor: pointer;
@@ -64,7 +64,7 @@
     justify-content: center;
     margin: 10px 0px;
   }
-  
+
   .mat-form-field {
     width: 100%;
     min-width: 300px;
@@ -90,4 +90,24 @@
 
   mat-card {
     width: 50%;
+  }
+
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0.3;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .drop-list-item {
+    display: flex;
+    flex-direction: row;
   }

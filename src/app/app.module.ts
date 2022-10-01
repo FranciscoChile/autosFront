@@ -55,6 +55,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { Home2Component } from './cars/home2/home2/home2.component';
 import { FilterCarSellingPipe } from './cars/car-selling/filter-car-selling.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule, ReactiveFormsModule,
     Ng2SearchPipeModule, MatSnackBarModule, NgImageSliderModule,
     MatDatepickerModule, MatNativeDateModule, NgxPaginationModule,
+    DragDropModule,
     FormlyModule.forRoot({
       extras: {
         lazyRender: true
