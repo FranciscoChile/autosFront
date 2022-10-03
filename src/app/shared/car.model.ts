@@ -10,7 +10,17 @@ export class Car {
     img!: Array<CarImage>;
     transmission!: string;
     fuel!: string;
-    type!: string;
+    typeVehicle!: string;
     engine!: string;
+    vehiclePlate!: string;
+    vin!: string;
+    chassisNumber!: string;
+    motorNumber!: string;
+    creationDate!: string;
+    autofactPrice!: number;
+    publicationPrice!: number;
+    equipments!: string;
+
+
     
 }

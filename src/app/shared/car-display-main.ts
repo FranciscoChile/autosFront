@@ -11,6 +11,7 @@ export class CarDisplayMain {
     price!: number;
     year!: number;
     fuel!: string;
-    type!: string;
+    typeVehicle!: string;
     engine!: string;
+    equipment!: string;
 }

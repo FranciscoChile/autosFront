@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiUrl: 'http://localhost:8080/api'
-   apiUrl: 'https://mube-backend.herokuapp.com/api'
+  apiUrl: 'http://localhost:8080/api'
+   //apiUrl: 'https://mube-backend.herokuapp.com/api'
 };
 
 /*

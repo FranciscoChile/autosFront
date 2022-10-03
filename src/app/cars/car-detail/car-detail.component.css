@@ -234,6 +234,14 @@ color: #FFFFFF;
     height: 260px;    
 }
 
+.equipment {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    color: #1A5D71;
+}
+
   @media (max-width: 500px) {
 
     .montserrat-medium-white-20px-2 {

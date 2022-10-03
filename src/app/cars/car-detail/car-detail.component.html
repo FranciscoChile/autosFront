@@ -106,14 +106,14 @@
       <div class="col-sm col-4" style="gap: 3.5rem;">
         <div class="container-button">
           <img src="../../../assets/images/rounded.png" style="width:100%;">
-          <div class="text-block">Tipo {{carDisplay.type}}</div>        
+          <div class="text-block">Tipo {{carDisplay.typeVehicle}}</div>        
         </div> 
       </div>
 
       <div class="col-sm col-4" style="gap: 3.5rem;">
         <div class="container-button">
           <img src="../../../assets/images/rounded.png" style="width:100%;">
-          <div class="text-block">Pasajeros</div>
+          <div class="text-block">Pasajeros </div>
         </div> 
       </div>
 
@@ -127,7 +127,7 @@
       <div class="col-sm col-4" style="gap: 3.5rem;">
         <div class="container-button">
           <img src="../../../assets/images/rounded.png" style="width:100%;">
-          <div class="text-block">Kms</div>
+          <div class="text-block">Kms {{carDisplay.kilometers}}</div>
         </div> 
       </div>
 
@@ -169,6 +169,23 @@
 <div class="equip-bar">
   EQUIPAMIENTO
 </div>
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" 
+    *ngFor="let eq of equipmentObject">
+
+      <div class="card border-0"  >             
+        <div class="card-body equipment">
+            <img src="../../../assets/images/equipment.png" style="width: 20px;" >   
+            {{$any(eq.key)}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <div class="container-garantia-bar" style="display: none;">
   <div class="garantia-bar">

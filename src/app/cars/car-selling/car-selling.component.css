@@ -12,8 +12,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
+}
 
+.card-auto:hover {
+    cursor: pointer;
+}
+
+.pressButton {
+    border: 2px solid #1A5D71;
+}
 
 ul.menu { 
     display: flex;
@@ -125,11 +132,13 @@ ul.menu li {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
 
 .container-filtro-autos div {
     text-align: center;
     width: min-content;
+    cursor: pointer;
 }
 
 .container-filtro-autos img {
@@ -294,7 +303,6 @@ ul.menu li {
     color: #1A5D71;
   }
 
-  
   .offcanvas {
     --bs-offcanvas-width: 350px;
   }
@@ -313,6 +321,11 @@ ul.menu li {
 
     color: #A3A3A3;
   }
+
+  .offcanvas .check-filter {
+    width: 10px;
+  }
+
 
   .label-sub-filtro {
     font-family: 'Nunito';

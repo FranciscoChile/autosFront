@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Car } from '../../shared/car.model';
 import { CarsService } from '../services/cars.service';
 import { CarDisplayMain } from '../../shared/car-display-main';
@@ -15,11 +15,19 @@ export class CarSellingComponent implements OnInit {
   carsDisplay: CarDisplayMain[]  = [];
   search : any;
   isCompleted:boolean = true;  
-  
+  typeVehicleCheck = '';
+  pressButton1 = '';
+  pressButton2 = '';
+  pressButton3 = '';
+  pressButton4 = '';
+  pressButton5 = '';
+  pressButton6 = '';
+  pressButton7 = '';
+
   filter = {};
 
   fields = {
-    type: '',
+    typeVehicle: '',
     priceFrom: '',
     priceTo: '',
     yearFrom: '',
@@ -63,6 +71,7 @@ export class CarSellingComponent implements OnInit {
           c!.transmission = elem.transmission;
           c!.year = elem.year;
           c!.fuel = elem.fuel;
+          c!.typeVehicle = elem.typeVehicle;
           return c!;        
           
         });
@@ -98,6 +107,54 @@ export class CarSellingComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
     this.getCars();
+  }
+
+  filterType(typeVehicle: string) {
+    
+    this.pressButton1 = '';
+    this.pressButton2 = '';
+    this.pressButton3 = '';
+    this.pressButton4 = '';
+    this.pressButton5 = '';
+    this.pressButton6 = '';
+    this.pressButton7 = '';
+
+    if (typeVehicle == 'citycar') {
+      this.typeVehicleCheck = 'citycar';
+      this.pressButton1 = 'pressButton';
+    }
+    if (typeVehicle == 'electric') {
+      this.typeVehicleCheck = 'electric';
+      this.pressButton2 = 'pressButton';
+    }
+    if (typeVehicle == 'hatchback') {
+      this.typeVehicleCheck = 'hatchback';
+      this.pressButton3 = 'pressButton';
+    }
+    if (typeVehicle == 'minivan') {
+      this.typeVehicleCheck = 'minivan';
+      this.pressButton4 = 'pressButton';
+    }
+    if (typeVehicle == 'pickup') {
+      this.typeVehicleCheck = 'pickup';
+      this.pressButton5 = 'pressButton';
+    }
+    if (typeVehicle == 'sedan') {
+      this.typeVehicleCheck = 'sedan';
+      this.pressButton6 = 'pressButton';
+    }
+    if (typeVehicle == 'suv') {
+      this.typeVehicleCheck = 'suv';
+      this.pressButton7 = 'pressButton';
+    }
+
+    this.fields.typeVehicle = typeVehicle;
+    this.updateFilters();
+  }
+
+  filterCheck(valueCheck: string) {
+    this.fields.typeVehicle = valueCheck;
+    this.updateFilters();
   }
 
 }

@@ -68,7 +68,52 @@
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <input type="text" [(ngModel)]="fields.type" (ngModelChange)="updateFilters()" />
+
+                  <div class="form-check ">
+                    <input class="form-check-input check-filter" [(ngModel)]="typeVehicleCheck"  type="radio" id="citycar" value="citycar" (change)="filterCheck('citycar')" name="radioGroupTypeVehicle">                    
+                    <label class="form-check-label" for="citycar">
+                      Citycar
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input check-filter" [(ngModel)]="typeVehicleCheck"  type="radio" id="electric" value="electric" (change)="filterCheck('electric')" name="radioGroupTypeVehicle">
+                    <label class="form-check-label" for="electric">
+                      Eléctrico
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input check-filter" [(ngModel)]="typeVehicleCheck"  type="radio" id="hatchback" value="hatchback" (change)="filterCheck('hatchback')" name="radioGroupTypeVehicle">
+                    <label class="form-check-label" for="hatchback">
+                      Hatchback
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input check-filter" [(ngModel)]="typeVehicleCheck"  type="radio" id="minivan" value="minivan" (change)="filterCheck('minivan')" name="radioGroupTypeVehicle">
+                    <label class="form-check-label" for="minivan">
+                      Minivan
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input check-filter" [(ngModel)]="typeVehicleCheck"  type="radio" id="pickup" value="pickup"  (change)="filterCheck('pickup')"  id="pickup" name="radioGroupTypeVehicle">
+                    <label class="form-check-label" for="pickup">
+                      Pickup
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input check-filter" [(ngModel)]="typeVehicleCheck"  type="radio" id="sedan" value="sedan" (change)="filterCheck('sedan')"  id="sedan" name="radioGroupTypeVehicle">
+                    <label class="form-check-label" for="sedan">
+                      Sedán
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input check-filter" [(ngModel)]="typeVehicleCheck"  type="radio" id="suv" value="suv" (change)="filterCheck('suv')" id="suv" name="radioGroupTypeVehicle">
+                    <label class="form-check-label" for="suv">
+                      SUV
+                    </label>
+                  </div>
+
+
+
                 </div>
               </div>
             </div>
@@ -187,40 +232,40 @@
 </div>
 
 <div class="container-filtro-autos">
-  <div>
-    <img src="../../../assets/images/auto1-filtro.png">Citycar
+  <div [class]="pressButton1" >
+    <img src="../../../assets/images/auto1-filtro.png" (click)="filterType('citycar')">Citycar
   </div>
-  <div>
-    <img src="../../../assets/images/auto2-filtro.png">Eléctrico
+  <div [class]="pressButton2">
+    <img src="../../../assets/images/auto2-filtro.png" (click)="filterType('electric')">Eléctrico
   </div>
-  <div>
-    <img src="../../../assets/images/auto3-filtro.png">Hatchback
+  <div [class]="pressButton3">
+    <img src="../../../assets/images/auto3-filtro.png" (click)="filterType('hatchback')">Hatchback
   </div>
-  <div>
-    <img src="../../../assets/images/auto4-filtro.png">Minivan
+  <div [class]="pressButton4">
+    <img src="../../../assets/images/auto4-filtro.png" (click)="filterType('minivan')">Minivan
   </div>
-  <div>
-    <img src="../../../assets/images/auto5-filtro.png">Pickup
+  <div [class]="pressButton5">
+    <img src="../../../assets/images/auto5-filtro.png" (click)="filterType('pickup')">Pickup
   </div>
-  <div>
-    <img src="../../../assets/images/auto6-filtro.png">Sedán
+  <div [class]="pressButton6">
+    <img src="../../../assets/images/auto6-filtro.png" (click)="filterType('sedan')">Sedán
   </div>
-  <div>
-    <img src="../../../assets/images/auto7-filtro.png">SUV
+  <div [class]="pressButton7">
+    <img src="../../../assets/images/auto7-filtro.png" (click)="filterType('suv')">SUV
   </div>
 </div>
 
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" 
-    *ngFor="let car of carsDisplay | filterCarSelling : filter | paginate
+    *ngFor="let car of carsDisplay | filter : search | filterCarSelling : filter | paginate
       : {
         itemsPerPage: tableSize,
         currentPage: page,
         totalItems: count
       };">
 
-      <div class="card" style="width: 16rem;" [routerLink] = "['/detail', car.id]" >
+      <div class="card card-auto" style="width: 16rem;" [routerLink] = "['/detail', car.id]" >
         <img class="rounded-top" [src]="car.imgMain">
         <div class="card-body">
           <h5 class="titleh5"><span style="font-weight: bold;">{{$any(car).brand}} {{$any(car).model}} |</span> {{$any(car).year}}</h5>
