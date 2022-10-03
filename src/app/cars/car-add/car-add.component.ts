@@ -5,6 +5,7 @@ import { CarsService } from '../services/cars.service';
 import { FormTemplateService } from '../services/form-template.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, } from '@angular/material/snack-bar';
 import { FormlyFieldConfig, FormlyFormBuilder, FormlyFormOptions } from '@ngx-formly/core';
+import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
 import Swal from 'sweetalert2';
 import { FormTemplate } from 'src/app/shared/form-template.model';
 import {
@@ -148,7 +149,8 @@ export class CarAddComponent implements OnInit {
     private api: CarsService,
     private ftService: FormTemplateService,
     private _snackBar: MatSnackBar,
-    private builder: FormlyFormBuilder
+    private builder: FormlyFormBuilder,
+    private formlyJsonschema: FormlyJsonschema
   ) { }
 
   ngOnInit() {
@@ -158,11 +160,12 @@ export class CarAddComponent implements OnInit {
         this.formTemplates = data;
 
         this.loadFormTemplate("owner");
-        // let template = this.formTemplates.find(pr => pr.name == "owner")!;
-
-        // this.fieldsOwner = JSON.parse(template.definition);
-        // this.formOwner = new FormGroup({});
-        // this.modelOwner = {};
+        // this.loadFormTemplate("documentation");
+        this.loadFormTemplate("equipment");
+        this.loadFormTemplate("indoorConditions");
+        // this.loadFormTemplate("electricController");
+        // this.loadFormTemplate("bodyworkEvaluation");
+        // this.loadFormTemplate("mechanicRevision");
       }
 
     });
@@ -193,6 +196,7 @@ export class CarAddComponent implements OnInit {
 
       case "indoorConditions":
         this.fieldsIndoorConditions = JSON.parse(template.definition);
+        // this.fieldsIndoorConditions = [this.formlyJsonschema.toFieldConfig(JSON.parse(template.definition))];
         this.formIndoorConditions = new FormGroup({});
         this.modelIndoorConditions = {};
         break;
