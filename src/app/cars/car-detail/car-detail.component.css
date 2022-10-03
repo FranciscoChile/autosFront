@@ -121,7 +121,6 @@ ul.menu li {
 
 .container-button {
     position: relative;
-    width: 8%;
 }
   
 .text-block {
@@ -188,13 +187,8 @@ ul.menu li {
 }
 
 .consejos {
-    height: 380px;
     background: #01B9C1;
     margin-top: 50px;
-
-    display: flex;
-    justify-content: right;
-    align-items: center;
 }
 
 .consejos-img {
@@ -218,4 +212,44 @@ line-height: 106.9%;
 
 
 color: #FFFFFF;
+}
+
+.overlap-group11 {
+    height: 79px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--robins-egg-blue);
+  }
+
+.garantia2 {
+    display: none;
+}
+
+.garantia3 {
+    background: none; 
+    border: 1px solid black; 
+    width: 400px; 
+    height: 260px;    
+}
+
+  @media (max-width: 500px) {
+
+    .montserrat-medium-white-20px-2 {
+        font-size: 15px;
+      }
+
+    .garantia2 {
+        display: block;
+    }
+
+    .garantia1 {
+        display: none;
+    }
+
+    .garantia3 {
+        width: auto;
+        height: auto;
+    }
 }
