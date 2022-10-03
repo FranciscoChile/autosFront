@@ -4,7 +4,7 @@
   <mat-panel-title>Agregar Vehículo</mat-panel-title>
 
   <mat-card-content style="flex-direction: column;">
-    <form [formGroup]="carForm" (ngSubmit)="onFormSubmit()">
+    <form [formGroup]="carForm" (ngSubmit)="preOnFormSubmit()">
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Marca" formControlName="brand">
@@ -210,10 +210,10 @@
     </mat-accordion>
 
     <div class="button-row">
-      <button type="submit" [disabled]="!carForm.valid || !formOwner.valid" mat-flat-button color="primary">
+      <button type="button" [disabled]="!carForm.valid || !formOwner.valid" mat-flat-button color="primary" (click)="preOnFormSubmit()">
         <mat-icon>save</mat-icon>
       </button>
-      <button type="button" mat-flat-button color="primary" (click)="cancelEdit()">Cancel</button>
+      <button type="button" mat-flat-button color="primary" >Cancel</button>
     </div>
 
   </mat-card-content>
