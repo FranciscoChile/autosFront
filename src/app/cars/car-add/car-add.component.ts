@@ -13,6 +13,7 @@ import {
   CdkDragMove,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
+import { Car } from 'src/app/shared/car.model';
 
 @Component({
   selector: 'app-car-add',
@@ -240,6 +241,7 @@ export class CarAddComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.onFormSubmit();
+        // Swal.fire({ text: JSON.stringify(this.carForm.value) + "----" + JSON.stringify(this.modelOwner)});
       }
     })
   }
@@ -247,7 +249,24 @@ export class CarAddComponent implements OnInit {
   onFormSubmit(): void {
     this.isCompleted = true;
     var formData = new FormData();
-    formData.append("car", JSON.stringify(this.carForm.value));
+    const car = new Car();
+
+    car.brand = this.carForm.value.brand!;
+    car.model = this.carForm.value.model!;
+    car.year = +this.carForm.value.year!;
+    car.kilometers = +this.carForm.value.kilometers!;
+    car.price = +this.carForm.value.price!;
+    car.transmission = this.carForm.value.transmission!;
+
+    car.owner = JSON.stringify(this.modelOwner);
+    car.documents = JSON.stringify(this.modelDocumentation);
+    car.equipments = JSON.stringify(this.modelEquipment);
+    car.indoorConditions = JSON.stringify(this.modelIndoorConditions);
+    car.electricController = JSON.stringify(this.modelElectricController);
+    car.mechanicRevision = JSON.stringify(this.modelMechanicRevision);
+    car.bodyworkEvaluation = JSON.stringify(this.modelBodyworkEvaluation);
+
+    formData.append("car", JSON.stringify(car));
 
     this.files.forEach((file: string | Blob) => {
       formData.append("files", file);
@@ -259,6 +278,13 @@ export class CarAddComponent implements OnInit {
           this.files = [];
           formData = new FormData();
           this.carForm.reset();
+          this.formOwner.reset();
+          this.formDocumentation.reset();
+          this.formEquipment.reset();
+          this.formIndoorConditions.reset();
+          this.formElectricController.reset();
+          this.formMechanicRevision.reset();
+          this.formBodyworkEvaluation.reset();
           //this.router.navigateByUrl('/selling')
         },
         error: (e) => {
