@@ -164,7 +164,7 @@ export class CarAddComponent implements OnInit {
         this.loadFormTemplate("equipment");
         this.loadFormTemplate("indoorConditions");
         this.loadFormTemplate("electricController");
-        // this.loadFormTemplate("bodyworkEvaluation");
+        this.loadFormTemplate("bodyworkEvaluation");
         // this.loadFormTemplate("mechanicRevision");
       }
 
