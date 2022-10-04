@@ -307,24 +307,31 @@ export class CarAddComponent implements OnInit {
     const reader = new FileReader();
 
     if (result != null) {
-      console.log("(file) result: ", result);
+      
 
       if (result.length != null) {
         console.log("uno");
+        console.log("(file) result: ", result);
         for (let index = 0; index < result.length; index++) {
           const element = result[index];
           reader.readAsDataURL(element);
-          reader.onload = () => {
+          reader.onload = async () => {
             const imageSrc = reader.result as string;
-            this.filesToDisplay.push(imageSrc);
+            await this.filesToDisplay.push(imageSrc);
           };
           this.files.push(element)
         }
-      } else {
-        console.log("dos");
+      } else {        
         const files = event.target.files;
+        console.log("dos");
+        console.log("(file) result: ", files);
         for (let index = 0; index < files.length; index++) {
           const element = files[index];
+          reader.readAsDataURL(element);
+          reader.onload = async () => {
+            const imageSrc = reader.result as string;
+            await this.filesToDisplay.push(imageSrc);
+          };
           this.files.push(element)
         }
       }

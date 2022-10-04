@@ -1,6 +1,6 @@
-<mat-progress-bar mode="indeterminate" *ngIf="isCompleted"></mat-progress-bar>
-
 <mat-card>
+  <mat-progress-bar mode="indeterminate" *ngIf="isCompleted"></mat-progress-bar>
+  
   <mat-panel-title>Agregar Vehículo</mat-panel-title>
 
   <mat-card-content style="flex-direction: column;">
@@ -227,12 +227,14 @@
       <div *ngFor="let file of files;let i= index" cdkDropList [cdkDropListData]="i">
         <div cdkDrag [cdkDragData]="i" (cdkDragEntered)="dragEntered($event)" (cdkDragMoved)="dragMoved($event)"
           (cdkDragDropped)="dragDropped($event)" class="example-box">
-          <!-- <p> {{ file.name }} - {{ i }} - {{ filesToDisplay.length }} </p> -->
-          <p> {{ file.name }} </p>
-          <img [src]="filesToDisplay[i]" style="height: 300px; width:500px">
-          <button class="delete-file" (click)="deleteAttachment(i)">
-            <mat-icon>delete</mat-icon>
-          </button>
+          
+          <div class="container-img">
+            <img [src]="filesToDisplay[i]" style="height: 100px">
+            <button class="btn" (click)="deleteAttachment(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>  
+
         </div>
       </div>
     </div>
