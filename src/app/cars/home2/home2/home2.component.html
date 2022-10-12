@@ -60,28 +60,25 @@
 
 </div>
 
-<div class="container p-0 m-0">
-
-  <div class="row g-0">
-    <div class="col" style="flex: 0 0 auto; width: 46%; display: flex;">
-
-        <img class="somos-img" src="../../../assets/images/somos1.png" >      
-
-    </div>
-    <div class="col boton-somos">
-      <div class="component-somos" >
-        <div class="cmo-comprar valign-text-middle gotham-bold-white-20px">¿Quiénes somos?</div>
-      </div>
-    </div>
-    <div class="col somos2" >
-
-        <img class="somos-img" src="../../../assets/images/home2.png" >
-
+<div class="row g-0">
+  <div class="col card-somos">
+    <div class="card border-0 ">
+      <img src="../../../assets/images/somos1.png" >
     </div>
   </div>
-
+  <div class="col" style="background: #1A5D71;">
+    <div class="card border-0 boton-somos">
+      <div class="component-somos" >
+        <div class="cmo-comprar valign-text-middle gotham-bold-white-20px">¿Quiénes somos?</div>
+      </div>  
+    </div>
+  </div>
+  <div class="col card-somos" >
+    <div class="card border-0 ">
+      <img  src="../../../assets/images/home2.png" >
+    </div>
+  </div>
 </div>
-
 
 <div class="row g-0">
   <div class="col-sm-6">
@@ -145,18 +142,19 @@
 </div>
 
 
-<div style="padding: 16px;">
-        
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="25%" *ngFor="let car of carsDisplay | slice:0:4;">
+<div style="padding-left: 70px; padding-right: 70px; padding-top: 20px; padding-bottom: 20px;">        
+  <div fxLayout="row wrap" >
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="25%" 
+    *ngFor="let car of carsDisplay | slice:0:4;" style="padding-bottom: 10px;">
       
-      <div class="card" style="width: 16rem;" [routerLink] = "['/detail', car.id]" >
-        <img class="rounded-top" [src]="car.imgMain">
+      <div class="card border-0 card-auto"  
+      [routerLink] = "['/detail', car.id]" >
+        <img class="rounded-top" [src]="car.imgMain" style="height: 144px;">
         <div class="card-body">
           <h5 class="titleh5"><span style="font-weight: bold;">{{$any(car).brand}} {{$any(car).model}} |</span> {{$any(car).year}}</h5>
           <p class="titleh4">{{$any(car).kilometers}}km - {{$any(car).fuel}} - {{$any(car).transmission}}</p>
           <p class="price">
-            $ {{$any(car).price | number:'3.0-0'}}
+            $ {{$any(car).price}}
           </p>
           <p class="titleh4">
             Sujeto a financiamiento

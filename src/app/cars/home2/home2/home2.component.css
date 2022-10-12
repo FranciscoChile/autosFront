@@ -502,8 +502,6 @@
     justify-content: center;
     align-items: center;
     padding-top: 10px;
-    margin-right: 20px;
-    margin-top: 50%;
   }
 
    .overlap-group9 {
@@ -1141,9 +1139,18 @@
   
   .ltimos-autos-publicados {
     text-align: center;
-    padding-top: 10px; 
+    padding-top: 25px; 
   }
   
+  .card-auto:hover {
+    cursor: pointer;
+  }
+
+  .card-auto {
+      box-shadow: 0 6px 6px 0px rgba(0,0,0,.2), 0 6px 6px 0 rgba(0,0,0,.14), 0 6px 6px 0 rgba(0,0,0,.12) !important;
+      width: 16rem;
+  }
+
    .auto {
     align-items: flex-start;
     cursor: pointer;
@@ -2028,10 +2035,13 @@ ul.menu li {
 }
 
 .boton-somos {
-  flex: 0 0 auto; 
-  width: 18%; 
-  background: #1A5D71; 
-  height: 223px;
+  top: 40%; 
+  left: 10%; 
+  background: #1A5D71;
+}
+
+.card-somos {
+  flex: 0 0 auto; width: 40%;
 }
 
 .boton-ver-mas {
@@ -2152,17 +2162,11 @@ ul.menu li {
   }
 
   .boton-somos {
-    flex: 0 0 auto; 
-    background: #1A5D71; 
-    height: 20px; 
-    width: 100%;
+    top: -80%; 
+    left: 10%; 
+    background: #1A5D71;
   }
-
-  .component-somos {
-    margin-top: 10px;
-    margin-left: 70px;
-  }
-
+  
   .ltimos-autos-publicados {
     text-align: center;
     line-height: 35px;    
@@ -2191,5 +2195,9 @@ ul.menu li {
 
   .montserrat-medium-white-20px-2 {
     font-size: 15px;
+  }
+
+  .card-somos {
+    flex: 0 0 auto; width: auto;
   }
 }

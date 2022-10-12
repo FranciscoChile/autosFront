@@ -8,7 +8,7 @@ export class CarDisplayMain {
     imgMain!: string;
     kilometers!: number;
     transmission!: string;
-    price!: number;
+    price!: string;
     year!: number;
     fuel!: string;
     typeVehicle!: string;

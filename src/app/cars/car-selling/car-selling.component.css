@@ -18,6 +18,12 @@
     cursor: pointer;
 }
 
+.card-auto {
+    box-shadow: 0 6px 6px 0px rgba(0,0,0,.2), 0 6px 6px 0 rgba(0,0,0,.14), 0 6px 6px 0 rgba(0,0,0,.12) !important;
+    width: 16rem;
+}
+
+
 .pressButton {
     border: 2px solid #1A5D71;
 }

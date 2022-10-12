@@ -395,3 +395,12 @@ html, body { height: 100%; }
   margin-right: 20px;
 }
 
+.montserrat-medium-bluminepx {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+
+  color: #1A5D71 !important;
+}

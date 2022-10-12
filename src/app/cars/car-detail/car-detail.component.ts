@@ -19,7 +19,7 @@ export class CarDetailComponent implements OnInit {
     imgMain: '',
     kilometers: 0,
     transmission: '',
-    price: 0,
+    price: '',
     year: 0,
     fuel: '',
     typeVehicle: '',
@@ -41,6 +41,11 @@ export class CarDetailComponent implements OnInit {
   }
 
   getCar(id: string) {
+
+    let pesosCL = Intl.NumberFormat("es-ES", {
+      style: "currency",
+      currency: "CLP"
+    });
 
     this.api.getCarById(id).subscribe(data => {
 
@@ -68,7 +73,7 @@ export class CarDetailComponent implements OnInit {
       this.carDisplay.brand = data.brand;
       this.carDisplay.model = data.model;
       this.carDisplay.year = data.year;
-      this.carDisplay.price = data.price;
+      this.carDisplay.price = pesosCL.format(data.price).replace('CLP','');
       this.carDisplay.typeVehicle = data.typeVehicle;
       this.carDisplay.kilometers = data.kilometers;
       this.carDisplay.transmission = data.transmission;

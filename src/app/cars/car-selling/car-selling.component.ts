@@ -46,6 +46,11 @@ export class CarSellingComponent implements OnInit {
 
   getCars(){
 
+    let pesosCL = Intl.NumberFormat("es-ES", {
+      style: "currency",
+      currency: "CLP"
+    });
+
     this.api.getCars().subscribe({
       next: (data) => {
         this.carsDisplay = data.map(elem => {
@@ -67,7 +72,7 @@ export class CarSellingComponent implements OnInit {
           
           c!.kilometers = elem.kilometers;
           c!.model = elem.model;
-          c!.price = elem.price;
+          c!.price = pesosCL.format(elem.price).replace('CLP','');                    
           c!.transmission = elem.transmission;
           c!.year = elem.year;
           c!.fuel = elem.fuel;

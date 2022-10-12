@@ -255,9 +255,9 @@
   </div>
 </div>
 
-<div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" 
+<div style="padding-left: 70px; padding-right: 70px; padding-top: 20px; padding-bottom: 20px;">
+  <div fxLayout="row wrap" >
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="25%" style="padding-bottom: 10px;" 
     *ngFor="let car of carsDisplay | filter : search | filterCarSelling : filter | paginate
       : {
         itemsPerPage: tableSize,
@@ -265,13 +265,13 @@
         totalItems: count
       };">
 
-      <div class="card card-auto" style="width: 16rem;" [routerLink] = "['/detail', car.id]" >
-        <img class="rounded-top" [src]="car.imgMain">
+      <div class="card card-auto" [routerLink] = "['/detail', car.id]" >
+        <img class="rounded-top" [src]="car.imgMain" style="height: 144px;">
         <div class="card-body">
           <h5 class="titleh5"><span style="font-weight: bold;">{{$any(car).brand}} {{$any(car).model}} |</span> {{$any(car).year}}</h5>
           <p class="titleh4">{{$any(car).kilometers}}km - {{$any(car).fuel}} - {{$any(car).transmission}}</p>
           <p class="price">
-            $ {{$any(car).price | number:'3.0-0'}}
+            $ {{$any(car).price}}
           </p>
           <p class="titleh4">
             Sujeto a financiamiento
