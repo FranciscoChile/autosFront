@@ -1,3 +1,4 @@
+import { CarListComponent } from './cars/car-list/car-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarAddComponent } from './cars/car-add/car-add.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
     component: CarAddComponent
   },
   {
+    path: 'list',
+    component: CarListComponent
+  },
+  {
     path: 'detail/:id',
     component: CarDetailComponent
   },
@@ -27,7 +32,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-  { 
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'

@@ -55,7 +55,9 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { Home2Component } from './cars/home2/home2/home2.component';
 import { FilterCarSellingPipe } from './cars/car-selling/filter-car-selling.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { DragDropModule } from '@angular/cdk/drag-drop'
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CarListComponent } from './cars/car-list/car-list.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
     LoginComponent,
     NotFoundComponent,
     Home2Component,
-    FilterCarSellingPipe
+    FilterCarSellingPipe,
+    CarListComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
         lazyRender: true
       }
     }),
-    FormlyBootstrapModule
+    FormlyBootstrapModule,
+    DataTablesModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
