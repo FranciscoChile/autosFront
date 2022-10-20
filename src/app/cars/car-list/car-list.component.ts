@@ -123,7 +123,7 @@ export class CarListComponent implements OnInit {
         break;
       case 'MOD':
         console.log("MOD SELECCIONADO");
-        this.router.navigate(["edit", car]);
+        this.router.navigate(['edit'], { state: { car: car }});
         break;
 
       default:

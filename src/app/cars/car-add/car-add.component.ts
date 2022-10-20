@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Navigation, Router } from '@angular/router';
 import { CarsService } from '../services/cars.service';
 import { FormTemplateService } from '../services/form-template.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, } from '@angular/material/snack-bar';
@@ -151,7 +151,20 @@ export class CarAddComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private builder: FormlyFormBuilder,
     private formlyJsonschema: FormlyJsonschema
-  ) { }
+  ) {
+    let nav: Navigation = this.router.getCurrentNavigation()!;
+    if (nav.extras && nav.extras.state && nav.extras.state['car']) {
+      let car = nav.extras.state['car'] as Car;
+      console.log("MODO EDICION: ", nav.extras.state['car']);
+      this.loadCar(car);
+    }
+  }
+
+  loadCar(car: Car) {
+    this.carForm.controls.brand.setValue(car.brand);
+    this.carForm.controls.model.setValue(car.model);
+    this.carForm.controls.year.setValue(car.year.toString());
+  }
 
   ngOnInit() {
     console.log("ejecutando on init");
