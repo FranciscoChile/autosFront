@@ -14,7 +14,7 @@ export class CarSellingComponent implements OnInit {
   cars: Car[]  = [];
   carsDisplay: CarDisplayMain[]  = [];
   search : any;
-  isCompleted:boolean = true;  
+  isCompleted:boolean = true;
   typeVehicleCheck = '';
   pressButton1 = '';
   pressButton2 = '';
@@ -51,34 +51,34 @@ export class CarSellingComponent implements OnInit {
       currency: "CLP"
     });
 
-    this.api.getCars().subscribe({
+    this.api.getCars(null).subscribe({
       next: (data) => {
         this.carsDisplay = data.map(elem => {
           var c  = new CarDisplayMain();
-  
+
           c!.id = elem.id;
           c!.brand = elem.brand;
           c!.img = elem.img;
-  
+
           if (elem) {
             let imgs = elem.img;
             if (imgs) {
               let imgPos = imgs.filter(imgs => imgs.position == 0 );
-              c!.imgMain = imgPos[0].name;  
+              c!.imgMain = imgPos[0].name;
             } else {
               c!.imgMain = "";
             }
           }
-          
+
           c!.kilometers = elem.kilometers;
           c!.model = elem.model;
-          c!.price = pesosCL.format(elem.price).replace('CLP','');                    
+          c!.price = pesosCL.format(elem.price).replace('CLP','');
           c!.transmission = elem.transmission;
           c!.year = elem.year;
           c!.fuel = elem.fuel;
           c!.typeVehicle = elem.typeVehicle;
-          return c!;        
-          
+          return c!;
+
         });
       },
       error: (e) => {
@@ -89,8 +89,8 @@ export class CarSellingComponent implements OnInit {
       }
     });
 
-    
-    
+
+
   }
 
   ngOnInit(): void {
@@ -115,7 +115,7 @@ export class CarSellingComponent implements OnInit {
   }
 
   filterType(typeVehicle: string) {
-    
+
     this.pressButton1 = '';
     this.pressButton2 = '';
     this.pressButton3 = '';

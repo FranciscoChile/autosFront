@@ -1,87 +1,62 @@
 <div class="container-fluid">
-  <div id="accordion">
-      <div id="ngb-panel-filtros" title="BÚSQUEDA">
+    <div class="row">
+      <div class="container col-12" id="ngb-panel-filtros" title="BÚSQUEDA">
+      <!-- <div class="col-12"> -->
+        <div class="card-body">
           <div class="bg-titulo">
-              BÚSQUEDA
+            BÚSQUEDA
           </div>
           <div class="row">
-              <div class="col-12">
-                  <div class="card accordion-card">
-                      <div class="card-body">
-                          <div class="row">
-                              <div class="col-lg-3 form-group">
-                                  <label for="marcaFiltro">Marca:</label>
-                                  <input type="text" id="marcaFiltro" maxlength="50" class="form-control" [(ngModel)]="marcaFiltro">
-                              </div>
-                          </div>
-                          <div class="col-12 botonera" >
-                              <button type="button" class="btn btn-primario" (click)="agregar()">
-                                  <i class="fa fa-plus"> </i> Agregar</button>
-                              <button type="button" class="btn btn-busqueda" (click)="buscar()">
-                                          <i class="fa fa-search" > </i> Buscar</button>
-                              <button type="button" class="btn btn-busqueda" (click)="limpiarFiltros()">
-                                  <i class="fa fa-brush" > </i> Limpiar</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+            <div class="col-lg-3 form-group">
+              <label for="marcaFiltro">Marca:</label>
+              <input type="text" id="marcaFiltro" maxlength="50" class="form-control" [(ngModel)]="marcaFiltro">
+            </div>
           </div>
-          <div class="row">
-              <div class="col-12">
-                  <div class="card accordion-card">
-                      <div class="card-body">
-                          <div class="table-responsive">
-                              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table row-border hover">
-                                  <thead>
-                                      <tr class="text-center">
-                                          <th class="columna-accion"><span class="label">ACCIONES</span> </th>
-                                          <th class="columna-dato"><span class="label label-primary">Marca</span></th>
-                                          <th class="columna-dato"><span class="label label-primary">Modelo</span></th>
-                                          <th class="columna-dato"><span class="label label-primary">Año</span></th>
-                                      </tr>
-                                  </thead>
-                                  <tbody class="text-center">
-                                      <tr *ngFor="let item of cars">
-                                          <td>
-                                              <a class="btn-accion ver" (click)="seleccionar(item, 'VER')"><i class="fa fa-eye"></i></a>
-                                              <a class="btn-accion editar" (click)="seleccionar(item, 'MOD')"><i class="fas fa-pencil-alt"></i></a>
-                                              <a class="btn-accion eliminar" (click)="eliminar(item)"><i class="fa fa-trash"></i></a>
-                                          </td>
-                                          <td>{{item.brand}}</td>
-                                          <td>{{item.model}}</td>
-                                          <td>{{item.year}}</td>
-                                      </tr>
-                                  </tbody>
-                              </table>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+          <div class="col-12 botonera">
+            <button type="button" class="btn btn-primario" (click)="agregar()">
+              <i class="fa fa-plus"> </i> Agregar</button>
+            <button type="button" class="btn btn-busqueda" (click)="buscar()">
+              <i class="fa fa-search"> </i> Buscar</button>
+            <button type="button" class="btn btn-busqueda" (click)="limpiarFiltros()">
+              <i class="fa fa-brush"> </i> Limpiar</button>
           </div>
+        </div>
       </div>
-      <div id="ngb-panel-admin" title="PERFIL">
-          <div class="bg-titulo">
-              VEHICULO
-          </div>
-          <div class="row">
-              <div class="col-12">
-                  <div class="bg-titulo2">
-                      Información General
-                  </div>
-                  <div class="card accordion-card">
-                      <div class="col-12 botonera">
-                          <button type="button" class="btn btn-primario" (click)="cancelarEdicion()"><i class="fas fa-times"> </i> Cancelar</button>
-                          <button type="button" class="btn btn-primario" (click)="guardar()"><i class="fa fa-save"> </i> Guardar</button>
-                          <br>
-                      </div>
-                  </div>
-              </div>
-          </div>
+    </div>
 
+    <div class="row">
+      <div class="col-12">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table row-border hover">
+              <thead>
+                <tr class="text-center">
+                  <th class="columna-accion"><span class="label">ACCIONES</span> </th>
+                  <th class="columna-dato"><span class="label label-primary">MARCA</span></th>
+                  <th class="columna-dato"><span class="label label-primary">MODELO</span></th>
+                  <th class="columna-dato"><span class="label label-primary">AÑO</span></th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr *ngFor="let item of cars">
+                  <td>
+                    <a class="btn-accion ver" (click)="seleccionar(item, 'VER')" data-toggle="tooltip" data-placement="left" title="VER" >
+                      <i class="bi bi-binoculars-fill"></i></a>
+                    <a class="btn-accion editar" (click)="seleccionar(item, 'MOD')" data-toggle="tooltip" data-placement="top" title="EDITAR">
+                      <i class="bi bi-pen-fill"></i></a>
+                    <a class="btn-accion eliminar" (click)="eliminar(item)" data-toggle="tooltip" data-placement="right" title="ELIMINAR">
+                      <i class="bi bi-trash-fill"></i></a>
+                  </td>
+                  <td>{{ item.brand }}</td>
+                  <td>{{ item.model }}</td>
+                  <td>{{ item.year }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
+<!-- </div> -->
 <br>
-<!-- <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-beat" [fullScreen]="true">
-  <p style="color: white"> Cargando... </p>
-</ngx-spinner> -->

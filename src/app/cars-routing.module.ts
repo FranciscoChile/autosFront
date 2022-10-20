@@ -17,6 +17,10 @@ const routes: Routes = [
     component: CarAddComponent
   },
   {
+    path: 'edit/:car',
+    component: CarAddComponent
+  },
+  {
     path: 'list',
     component: CarListComponent
   },

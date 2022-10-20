@@ -22,7 +22,7 @@ export class Home2Component implements OnInit {
       currency: "CLP"
     });
 
-    this.api.getCars().subscribe({
+    this.api.getCars(null).subscribe({
       next: (data) => {
         this.carsDisplay = data.map(elem => {
           var c  = new CarDisplayMain();
@@ -30,17 +30,17 @@ export class Home2Component implements OnInit {
           c!.id = elem.id;
           c!.brand = elem.brand;
           c!.img = elem.img;
-  
+
           if (elem) {
             let imgs = elem.img;
             if (imgs) {
               let imgPos = imgs.filter(imgs => imgs.position == 0 );
-              c!.imgMain = imgPos[0].name;  
+              c!.imgMain = imgPos[0].name;
             } else {
               c!.imgMain = "";
             }
           }
-          
+
           c!.kilometers = elem.kilometers;
           c!.model = elem.model;
           c!.price = pesosCL.format(elem.price).replace('CLP','');
@@ -48,7 +48,7 @@ export class Home2Component implements OnInit {
           c!.year = elem.year;
 
           return c!;
-          
+
         });
       },
       error: (e) => {

@@ -307,7 +307,7 @@ export class CarAddComponent implements OnInit {
     const reader = new FileReader();
 
     if (result != null) {
-      
+
 
       if (result.length != null) {
         console.log("uno");
@@ -321,7 +321,7 @@ export class CarAddComponent implements OnInit {
           };
           this.files.push(element)
         }
-      } else {        
+      } else {
         const files = event.target.files;
         console.log("dos");
         console.log("(file) result: ", files);

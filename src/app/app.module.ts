@@ -1,3 +1,4 @@
+import { DatatablesService } from './cars/services/datatables.service';
 import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -95,6 +96,7 @@ import { DataTablesModule } from 'angular-datatables';
     MatSidenavModule, MatListModule,
     MatSlideToggleModule, MatGridListModule, MatExpansionModule,
     FormsModule, ReactiveFormsModule,
+    DataTablesModule,
     Ng2SearchPipeModule, MatSnackBarModule, NgImageSliderModule,
     MatDatepickerModule, MatNativeDateModule, NgxPaginationModule,
     DragDropModule,
@@ -103,12 +105,12 @@ import { DataTablesModule } from 'angular-datatables';
         lazyRender: true
       }
     }),
-    FormlyBootstrapModule,
-    DataTablesModule
+    FormlyBootstrapModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true },
+    DatatablesService
   ],
   bootstrap: [AppComponent]
 })
