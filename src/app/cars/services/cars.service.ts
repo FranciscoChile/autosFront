@@ -44,8 +44,29 @@ export class CarsService {
       )
   }
 
+  update(car: any, id: number): Observable<Car> {
+    return this.http.put<Car>(this.apiUrl + "/" + id, JSON.stringify(car), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  delete(id: string): Observable<Car> {
+    return this.http.delete<Car>(this.apiUrl + "/" + id, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   createCarMultipleImages(car: any): Observable<any> {
     return this.http.post(this.apiUrl + "/car-multiple-images", car)
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
+  updateCarMultipleImages(car: any, id:  string): Observable<any> {
+    return this.http.put(this.apiUrl + "/car-multiple-images/" + id, car)
       .pipe(
         catchError(this.errorHandler)
       );

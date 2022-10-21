@@ -1,6 +1,6 @@
 <mat-card>
   <mat-progress-bar mode="indeterminate" *ngIf="isCompleted"></mat-progress-bar>
-  
+
   <mat-panel-title>Agregar Vehículo</mat-panel-title>
 
   <mat-card-content style="flex-direction: column;">
@@ -213,7 +213,7 @@
       <button type="button" [disabled]="!carForm.valid || !formOwner.valid" mat-flat-button color="primary" (click)="preOnFormSubmit()">
         <mat-icon>save</mat-icon>
       </button>
-      <button type="button" mat-flat-button color="primary" >Cancel</button>
+      <button type="button" mat-flat-button color="primary" (click)="cancel()">Cancel</button>
     </div>
 
   </mat-card-content>
@@ -227,13 +227,13 @@
       <div *ngFor="let file of files;let i= index" cdkDropList [cdkDropListData]="i">
         <div cdkDrag [cdkDragData]="i" (cdkDragEntered)="dragEntered($event)" (cdkDragMoved)="dragMoved($event)"
           (cdkDragDropped)="dragDropped($event)" class="example-box">
-          
+
           <div class="container-img">
             <img [src]="filesToDisplay[i]" style="height: 100px">
             <button class="btn" (click)="deleteAttachment(i)">
               <mat-icon>delete</mat-icon>
             </button>
-          </div>  
+          </div>
 
         </div>
       </div>

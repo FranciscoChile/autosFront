@@ -13,11 +13,11 @@
             </div>
           </div>
           <div class="col-12 botonera">
-            <button type="button" class="btn btn-primario" (click)="agregar()">
+            <button type="button" class="btn btn-primario" (click)="add()">
               <i class="fa fa-plus"> </i> Agregar</button>
-            <button type="button" class="btn btn-busqueda" (click)="buscar()">
+            <button type="button" class="btn btn-busqueda" (click)="search()">
               <i class="fa fa-search"> </i> Buscar</button>
-            <button type="button" class="btn btn-busqueda" (click)="limpiarFiltros()">
+            <button type="button" class="btn btn-busqueda" (click)="cleanFilters()">
               <i class="fa fa-brush"> </i> Limpiar</button>
           </div>
         </div>
@@ -40,11 +40,11 @@
               <tbody class="text-center">
                 <tr *ngFor="let item of cars">
                   <td>
-                    <a class="btn-accion ver" (click)="seleccionar(item, 'VER')" data-toggle="tooltip" data-placement="left" title="VER" >
-                      <i class="bi bi-binoculars-fill"></i></a>
-                    <a class="btn-accion editar" (click)="seleccionar(item, 'MOD')" data-toggle="tooltip" data-placement="top" title="EDITAR">
+                    <!-- <a class="btn-accion ver" (click)="select(item, 'VER')" data-toggle="tooltip" data-placement="left" title="VER" >
+                      <i class="bi bi-binoculars-fill"></i></a> -->
+                    <a class="btn-accion editar" (click)="select(item, 'MOD')" data-toggle="tooltip" data-placement="top" title="EDITAR">
                       <i class="bi bi-pen-fill"></i></a>
-                    <a class="btn-accion eliminar" (click)="eliminar(item)" data-toggle="tooltip" data-placement="right" title="ELIMINAR">
+                    <a class="btn-accion eliminar" (click)="delete(item)" data-toggle="tooltip" data-placement="right" title="ELIMINAR">
                       <i class="bi bi-trash-fill"></i></a>
                   </td>
                   <td>{{ item.brand }}</td>

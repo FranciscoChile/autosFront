@@ -30,6 +30,79 @@ export class CarAddComponent implements OnInit {
     dropIndex: number;
   };
 
+  inEdition: Boolean = false;
+
+  car!: Car;
+
+  formTemplates!: FormTemplate[];
+
+  files: any = [];
+  filesToDisplay: any = [];
+  isCompleted: boolean = true;
+
+  formOwner = new FormGroup({});
+  formDocumentation = new FormGroup({});
+  formEquipment = new FormGroup({});
+  formIndoorConditions = new FormGroup({});
+  formElectricController = new FormGroup({});
+  formMechanicRevision = new FormGroup({});
+  formBodyworkEvaluation = new FormGroup({});
+
+  options: FormlyFormOptions = {};
+
+  modelOwner = {};
+  fieldsOwner: FormlyFieldConfig[] = [];
+
+  modelDocumentation = {};
+  fieldsDocumentation: FormlyFieldConfig[] = [];
+
+  modelEquipment = {};
+  fieldsEquipment: FormlyFieldConfig[] = [];
+
+  modelIndoorConditions = {};
+  fieldsIndoorConditions: FormlyFieldConfig[] = [];
+
+  modelElectricController = {};
+  fieldsElectricController: FormlyFieldConfig[] = [];
+
+  modelBodyworkEvaluation = {};
+  fieldsBodyworkEvaluation: FormlyFieldConfig[] = [];
+
+  modelMechanicRevision = {};
+  fieldsMechanicRevision: FormlyFieldConfig[] = [];
+
+  constructor(
+    private router: Router,
+    private api: CarsService,
+    private ftService: FormTemplateService,
+    private _snackBar: MatSnackBar,
+    private builder: FormlyFormBuilder,
+    private formlyJsonschema: FormlyJsonschema
+  ) {
+    let nav: Navigation = this.router.getCurrentNavigation()!;
+    if (nav.extras && nav.extras.state && nav.extras.state['car']) {
+      this.inEdition = true;
+      this.car = nav.extras.state['car'] as Car;
+      console.log("MODO EDICION: ", nav.extras.state['car']);
+      // this.loadCar(car);
+    }
+  }
+
+  carForm = new FormGroup({
+    brand: new FormControl('', Validators.required),
+    model: new FormControl('', Validators.required),
+    year: new FormControl('', Validators.required),
+    kilometers: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.required),
+    transmission: new FormControl('', Validators.required),
+    // vehiclePlate: new FormControl('', Validators.required),
+    // vin: new FormControl('', Validators.required),
+    // chassisNumber: new FormControl('', Validators.required),
+    // motorNumber: new FormControl('', Validators.required),
+    // autofactPrice: new FormControl('', Validators.required),
+    // publicationPrice: new FormControl('', Validators.required)
+  });
+
   add() {
     this.files.push(this.files.length + 1);
   }
@@ -92,78 +165,36 @@ export class CarAddComponent implements OnInit {
     this.dragDropInfo = undefined;
   }
 
-  carForm = new FormGroup({
-    brand: new FormControl('', Validators.required),
-    model: new FormControl('', Validators.required),
-    year: new FormControl('', Validators.required),
-    kilometers: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
-    transmission: new FormControl('', Validators.required),
-    // vehiclePlate: new FormControl('', Validators.required),
-    // vin: new FormControl('', Validators.required),
-    // chassisNumber: new FormControl('', Validators.required),
-    // motorNumber: new FormControl('', Validators.required),
-    // autofactPrice: new FormControl('', Validators.required),
-    // publicationPrice: new FormControl('', Validators.required)
-  });
+  loadCar() {
+    this.carForm.controls.brand.setValue(this.car.brand);
+    this.carForm.controls.model.setValue(this.car.model);
+    this.carForm.controls.year.setValue(this.car.year.toString());
+    this.carForm.controls.kilometers.setValue(this.car.kilometers.toString());
+    this.carForm.controls.price.setValue(this.car.price.toString());
+    this.carForm.controls.transmission.setValue(this.car.transmission);
 
-  formTemplates!: FormTemplate[];
-
-  files: any = [];
-  filesToDisplay: any = [];
-  isCompleted: boolean = true;
-
-  formOwner = new FormGroup({});
-  formDocumentation = new FormGroup({});
-  formEquipment = new FormGroup({});
-  formIndoorConditions = new FormGroup({});
-  formElectricController = new FormGroup({});
-  formMechanicRevision = new FormGroup({});
-  formBodyworkEvaluation = new FormGroup({});
-
-  options: FormlyFormOptions = {};
-
-  modelOwner = {};
-  fieldsOwner: FormlyFieldConfig[] = [];
-
-  modelDocumentation = {};
-  fieldsDocumentation: FormlyFieldConfig[] = [];
-
-  modelEquipment = {};
-  fieldsEquipment: FormlyFieldConfig[] = [];
-
-  modelIndoorConditions = {};
-  fieldsIndoorConditions: FormlyFieldConfig[] = [];
-
-  modelElectricController = {};
-  fieldsElectricController: FormlyFieldConfig[] = [];
-
-  modelBodyworkEvaluation = {};
-  fieldsBodyworkEvaluation: FormlyFieldConfig[] = [];
-
-  modelMechanicRevision = {};
-  fieldsMechanicRevision: FormlyFieldConfig[] = [];
-
-  constructor(
-    private router: Router,
-    private api: CarsService,
-    private ftService: FormTemplateService,
-    private _snackBar: MatSnackBar,
-    private builder: FormlyFormBuilder,
-    private formlyJsonschema: FormlyJsonschema
-  ) {
-    let nav: Navigation = this.router.getCurrentNavigation()!;
-    if (nav.extras && nav.extras.state && nav.extras.state['car']) {
-      let car = nav.extras.state['car'] as Car;
-      console.log("MODO EDICION: ", nav.extras.state['car']);
-      this.loadCar(car);
-    }
+    this.modelOwner = this.loadDynamicForm(this.fieldsOwner, this.car.owner);
+    this.modelDocumentation = this.loadDynamicForm(this.fieldsDocumentation, this.car.documents);
+    this.modelEquipment = this.loadDynamicForm(this.fieldsEquipment, this.car.equipments);
+    this.modelIndoorConditions = this.loadDynamicForm(this.fieldsIndoorConditions, this.car.indoorConditions);
+    this.modelElectricController = this.loadDynamicForm(this.fieldsElectricController, this.car.electricController);
+    this.modelBodyworkEvaluation = this.loadDynamicForm(this.fieldsBodyworkEvaluation, this.car.bodyworkEvaluation);
+    this.modelMechanicRevision = this.loadDynamicForm(this.fieldsMechanicRevision, this.car.mechanicRevision);
   }
 
-  loadCar(car: Car) {
-    this.carForm.controls.brand.setValue(car.brand);
-    this.carForm.controls.model.setValue(car.model);
-    this.carForm.controls.year.setValue(car.year.toString());
+  loadDynamicForm(fields: FormlyFieldConfig[], formData: string) {
+    // cargando datos seccion formulario dinamico
+    var obj: Record<string, any> = {};
+
+    fields.forEach(element => {
+      let key: any = element.key;
+      let cObj = JSON.parse(formData);
+      if (cObj) {
+        obj[key] = cObj[key];
+      }
+    });
+
+    return obj;
   }
 
   ngOnInit() {
@@ -179,6 +210,11 @@ export class CarAddComponent implements OnInit {
         this.loadFormTemplate("electricController");
         this.loadFormTemplate("bodyworkEvaluation");
         this.loadFormTemplate("mechanicRevision");
+
+        if (this.car) {
+          this.loadCar();
+        }
+
       }
 
     });
@@ -242,7 +278,7 @@ export class CarAddComponent implements OnInit {
   cancel() {
     console.log("cancelar");
     // let funcioneSubMenuProyecto = sessionStorage.getItem('funcioneSubMenuProyecto');
-    // this.router.navigate([funcioneSubMenuProyecto]);
+    this.router.navigate(['list']);
   }
 
   preOnFormSubmit() {
@@ -266,30 +302,31 @@ export class CarAddComponent implements OnInit {
   onFormSubmit(): void {
     this.isCompleted = true;
     var formData = new FormData();
-    const car = new Car();
+    const carLocal = new Car();
 
-    car.brand = this.carForm.value.brand!;
-    car.model = this.carForm.value.model!;
-    car.year = +this.carForm.value.year!;
-    car.kilometers = +this.carForm.value.kilometers!;
-    car.price = +this.carForm.value.price!;
-    car.transmission = this.carForm.value.transmission!;
+    carLocal.brand = this.carForm.value.brand!;
+    carLocal.model = this.carForm.value.model!;
+    carLocal.year = +this.carForm.value.year!;
+    carLocal.kilometers = +this.carForm.value.kilometers!;
+    carLocal.price = +this.carForm.value.price!;
+    carLocal.transmission = this.carForm.value.transmission!;
 
-    car.owner = JSON.stringify(this.modelOwner);
-    car.documents = JSON.stringify(this.modelDocumentation);
-    car.equipments = JSON.stringify(this.modelEquipment);
-    car.indoorConditions = JSON.stringify(this.modelIndoorConditions);
-    car.electricController = JSON.stringify(this.modelElectricController);
-    car.mechanicRevision = JSON.stringify(this.modelMechanicRevision);
-    car.bodyworkEvaluation = JSON.stringify(this.modelBodyworkEvaluation);
+    carLocal.owner = JSON.stringify(this.modelOwner);
+    carLocal.documents = JSON.stringify(this.modelDocumentation);
+    carLocal.equipments = JSON.stringify(this.modelEquipment);
+    carLocal.indoorConditions = JSON.stringify(this.modelIndoorConditions);
+    carLocal.electricController = JSON.stringify(this.modelElectricController);
+    carLocal.mechanicRevision = JSON.stringify(this.modelMechanicRevision);
+    carLocal.bodyworkEvaluation = JSON.stringify(this.modelBodyworkEvaluation);
 
-    formData.append("car", JSON.stringify(car));
+    formData.append("car", JSON.stringify(carLocal));
 
-    this.files.forEach((file: string | Blob) => {
-      formData.append("files", file);
-    });
+    if (!this.inEdition) {
+      this.files.forEach((file: string | Blob) => {
+        formData.append("files", file);
+      });
 
-    this.api.createCarMultipleImages(formData)
+      this.api.createCarMultipleImages(formData)
       .subscribe({
         next: (v) => {
           this.files = [];
@@ -302,16 +339,43 @@ export class CarAddComponent implements OnInit {
           this.formElectricController.reset();
           this.formMechanicRevision.reset();
           this.formBodyworkEvaluation.reset();
-          //this.router.navigateByUrl('/selling')
+          this.router.navigate(['list'])
         },
         error: (e) => {
-          throw new Error('Error en el ingreso de los datos');
+          throw new Error('Error en el ingreso de los datos (1)');
         },
         complete: () => {
           this.isCompleted = false;
           this._snackBar.open("Auto creado", "X", { duration: 5000 });
         }
       });
+
+    } else {
+      this.api.updateCarMultipleImages(formData, this.car.id)
+      .subscribe({
+        next: (v) => {
+          this.files = [];
+          formData = new FormData();
+          this.carForm.reset();
+          this.formOwner.reset();
+          this.formDocumentation.reset();
+          this.formEquipment.reset();
+          this.formIndoorConditions.reset();
+          this.formElectricController.reset();
+          this.formMechanicRevision.reset();
+          this.formBodyworkEvaluation.reset();
+          this.router.navigate(['list'])
+        },
+        error: (e) => {
+          throw new Error('Error en el ingreso de los datos (2)');
+        },
+        complete: () => {
+          this.isCompleted = false;
+          this._snackBar.open("Auto actualizado", "X", { duration: 5000 });
+        }
+      });
+    }
+
 
   }
 

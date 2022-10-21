@@ -5,6 +5,8 @@ import { Car } from 'src/app/shared/car.model';
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import Swal from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-car-list',
@@ -24,6 +26,7 @@ export class CarListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   constructor(
+    private _snackBar: MatSnackBar,
     private api: CarsService,
     private datatableService: DatatablesService,
     private router: Router
@@ -46,7 +49,7 @@ export class CarListComponent implements OnInit {
     this.dtTrigger.unsubscribe();
   }
 
-  buscar() {
+  search() {
     console.log("filtros: ", this.marcaFiltro);
     this.api.getCars(this.marcaFiltro?.trim()).subscribe({
       next: (data) => {
@@ -107,15 +110,16 @@ export class CarListComponent implements OnInit {
     });
   }
 
-  limpiarFiltros() {
+  cleanFilters() {
     this.cars = this.datatableService.limpiarRegistros<Car>(this.cars, <DataTableDirective>this.dtElements.get(0), this.dtTrigger);
+    this.marcaFiltro = null;
   }
 
-  agregar() {
-
+  add() {
+    this.router.navigate(['add']);
   }
 
-  seleccionar(car: Car, accion: 'VER' | 'MOD' | 'EL'): any {
+  select(car: Car, accion: 'VER' | 'MOD' | 'EL'): any {
     console.log("SELECCIONAR: ", car, accion);
     switch (accion) {
       case 'VER':
@@ -123,7 +127,7 @@ export class CarListComponent implements OnInit {
         break;
       case 'MOD':
         console.log("MOD SELECCIONADO");
-        this.router.navigate(['edit'], { state: { car: car }});
+        this.router.navigate(['edit'], { state: { car: car } });
         break;
 
       default:
@@ -132,9 +136,33 @@ export class CarListComponent implements OnInit {
 
   }
 
-  eliminar(car: Car) {
+  delete(car: Car) {
     console.log("ELIMINAR: ", car);
-
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "El registro será eliminado",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.delete(car.id)
+          .subscribe({
+            next: (v) => {
+              console.log("registro eliminado");
+              this.search();
+            },
+            error: (e) => {
+              throw new Error('Error al eliminar el registro');
+            },
+            complete: () => {
+              this._snackBar.open("Auto eliminado", "X", { duration: 5000 });
+            }
+          });
+      }
+    })
   }
 
 }
